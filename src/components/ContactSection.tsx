@@ -85,7 +85,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="font-medium">GitHub</div>
-                  <div className="text-sm text-gray-400">@Dhruv kakadiya</div>
+                  <div className="text-sm text-gray-400">@Dhruvkakadiya1911</div>
                 </div>
               </a>
 
