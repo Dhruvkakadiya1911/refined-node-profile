@@ -1,11 +1,13 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Code, Database, Server } from 'lucide-react';
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLDivElement>(null);
   const fullText = "Hey, I'm Alex Chen – Backend Node.js Developer";
 
   useEffect(() => {
@@ -14,57 +16,174 @@ const HeroSection = () => {
         setDisplayText(prev => prev + fullText[currentIndex]);
         setCurrentIndex(prev => prev + 1);
       }, 50);
-
       return () => clearTimeout(timer);
     }
   }, [currentIndex, fullText]);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        });
+      }
+    };
+
+    const heroElement = heroRef.current;
+    if (heroElement) {
+      heroElement.addEventListener('mousemove', handleMouseMove);
+      return () => heroElement.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
-      {/* Animated background elements */}
+    <section 
+      ref={heroRef}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 dark:from-gray-100 dark:via-white dark:to-gray-200 transition-all duration-1000"
+    >
+      {/* Magnetic cursor follower */}
+      <div 
+        className="absolute w-96 h-96 rounded-full pointer-events-none z-10 opacity-20 transition-all duration-300 ease-out"
+        style={{
+          background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.1) 50%, transparent 100%)',
+          transform: `translate(${mousePosition.x - 192}px, ${mousePosition.y - 192}px)`,
+          filter: 'blur(40px)'
+        }}
+      />
+
+      {/* Floating geometric shapes */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-gray-200 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl opacity-70 animate-float transition-colors duration-500"></div>
-        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-600 dark:to-gray-700 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl opacity-70 animate-float transition-colors duration-500" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl opacity-70 animate-float transition-colors duration-500" style={{ animationDelay: '4s' }}></div>
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute opacity-10 dark:opacity-5 transition-all duration-1000"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${60 + Math.random() * 40}px`,
+              height: `${60 + Math.random() * 40}px`,
+              transform: `rotate(${Math.random() * 360}deg)`,
+              animation: `float ${6 + Math.random() * 4}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 4}s`
+            }}
+          >
+            {i % 3 === 0 ? (
+              <Code className="w-full h-full text-white dark:text-black" />
+            ) : i % 3 === 1 ? (
+              <Database className="w-full h-full text-white dark:text-black" />
+            ) : (
+              <Server className="w-full h-full text-white dark:text-black" />
+            )}
+          </div>
+        ))}
       </div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-black dark:text-white leading-tight transition-colors duration-300">
-          {displayText}
-          <span className="animate-pulse">|</span>
-        </h1>
+      {/* Grid pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-5 dark:opacity-10"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }}
+      />
+
+      <div className="relative z-20 text-center max-w-6xl mx-auto px-4">
+        {/* Main heading with gradient text */}
+        <div className="mb-8">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-4 leading-none">
+            <span className="bg-gradient-to-r from-white via-gray-200 to-white dark:from-black dark:via-gray-800 dark:to-black bg-clip-text text-transparent animate-pulse">
+              {displayText}
+            </span>
+            <span className="animate-ping text-white dark:text-black">|</span>
+          </h1>
+        </div>
         
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto animate-fade-in transition-colors duration-300">
-          Building fast, scalable, and secure backend systems that power modern applications
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-in">
-          <Button 
-            size="lg" 
-            className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            View Projects
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-black dark:border-white text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all duration-300 transform hover:scale-105"
-          >
-            Download Resume
-          </Button>
+        {/* Subtitle with typewriter effect */}
+        <div className="relative mb-12">
+          <p className="text-2xl md:text-4xl text-gray-300 dark:text-gray-600 font-light max-w-4xl mx-auto leading-relaxed">
+            Crafting <span className="font-bold text-white dark:text-black">scalable backends</span> that power 
+            <span className="font-bold text-white dark:text-black"> tomorrow's applications</span>
+          </p>
+          
+          {/* Decorative elements */}
+          <div className="absolute -top-8 -left-8 w-16 h-16 border-2 border-white/20 dark:border-black/20 rotate-45 animate-spin" style={{ animationDuration: '20s' }}></div>
+          <div className="absolute -bottom-8 -right-8 w-12 h-12 border-2 border-white/30 dark:border-black/30 rotate-45 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
         </div>
 
+        {/* Magnetic buttons with hover effects */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
+          <div className="group relative">
+            <Button 
+              size="lg" 
+              className="relative z-10 bg-white text-black dark:bg-black dark:text-white hover:scale-110 transition-all duration-500 text-lg px-8 py-4 rounded-full font-bold shadow-2xl overflow-hidden"
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <span className="relative z-10">Explore Projects</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white dark:from-gray-800 dark:to-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            </Button>
+            {/* Magnetic glow effect */}
+            <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
+          </div>
+
+          <div className="group relative">
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="relative z-10 border-2 border-white dark:border-black text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white hover:scale-110 transition-all duration-500 text-lg px-8 py-4 rounded-full font-bold backdrop-blur-md overflow-hidden"
+            >
+              <span className="relative z-10">Download CV</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/30 dark:from-black/10 dark:to-black/30 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
+            </Button>
+            <div className="absolute inset-0 bg-white/30 dark:bg-black/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
+          </div>
+        </div>
+
+        {/* Animated scroll indicator */}
         <div className="animate-bounce">
-          <ArrowDown className="w-8 h-8 mx-auto text-gray-400 dark:text-gray-500 transition-colors duration-300" />
+          <div className="relative">
+            <ArrowDown className="w-8 h-8 mx-auto text-white/60 dark:text-black/60 animate-pulse" />
+            <div className="absolute inset-0 bg-white/20 dark:bg-black/20 rounded-full blur-md animate-ping"></div>
+          </div>
         </div>
       </div>
 
-      {/* Floating code snippet */}
-      <div className="absolute bottom-10 right-10 hidden lg:block glass dark:glass-dark rounded-lg p-4 font-mono text-sm animate-float transition-all duration-300">
-        <div className="text-gray-600 dark:text-gray-400 transition-colors duration-300">// Building with passion</div>
-        <div className="text-black dark:text-white transition-colors duration-300">const developer = new NodeJSDev();</div>
-        <div className="text-black dark:text-white transition-colors duration-300">developer.code(passion, skill);</div>
+      {/* Enhanced floating code snippet */}
+      <div className="absolute bottom-10 right-10 hidden lg:block">
+        <div className="glass dark:glass-dark rounded-2xl p-6 font-mono text-sm backdrop-blur-xl border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group">
+          <div className="flex items-center space-x-2 mb-4">
+            <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+            <span className="text-white/70 dark:text-black/70 ml-4">~/server.js</span>
+          </div>
+          <div className="space-y-2 group-hover:scale-105 transition-transform duration-300">
+            <div className="text-green-400 dark:text-green-600">// Building the future</div>
+            <div className="text-white dark:text-black">const magic = new NodeJS();</div>
+            <div className="text-blue-400 dark:text-blue-600">magic.code(passion, innovation);</div>
+            <div className="text-purple-400 dark:text-purple-600">server.listen(dreams);</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Particle system simulation */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white/30 dark:bg-black/30 rounded-full"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `float ${10 + Math.random() * 10}s linear infinite`,
+              animationDelay: `${Math.random() * 10}s`
+            }}
+          />
+        ))}
       </div>
     </section>
   );
