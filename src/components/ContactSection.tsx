@@ -62,7 +62,7 @@ const ContactSection = () => {
 
             <div className="space-y-4">
               <a
-                href="mailto:alex.chen@email.com"
+                href="mailto:dhruvkakadiya1911@gmail.com"
                 className="flex items-center space-x-4 text-gray-300 hover:text-white transition-colors group"
               >
                 <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white/20 transition-colors">
@@ -70,7 +70,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="font-medium">Email</div>
-                  <div className="text-sm text-gray-400">alex.chen@email.com</div>
+                  <div className="text-sm text-gray-400">dhruvkakadiya1911@gmail.com</div>
                 </div>
               </a>
 
@@ -85,7 +85,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="font-medium">GitHub</div>
-                  <div className="text-sm text-gray-400">@alexchen</div>
+                  <div className="text-sm text-gray-400">@Dhruv kakadiya</div>
                 </div>
               </a>
 
@@ -100,7 +100,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <div className="font-medium">LinkedIn</div>
-                  <div className="text-sm text-gray-400">Alex Chen</div>
+                  <div className="text-sm text-gray-400">Dhruv kakadiya</div>
                 </div>
               </a>
             </div>
