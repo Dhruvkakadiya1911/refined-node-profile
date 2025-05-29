@@ -6,6 +6,7 @@ import AboutSection from '../components/AboutSection';
 import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ExperienceSection from '../components/ExperienceSection';
+import TestimonialsSection from '../components/TestimonialsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 
@@ -21,7 +22,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen bg-white transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen bg-white dark:bg-gray-900 transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Navigation />
       <main>
         <HeroSection />
@@ -29,6 +30,7 @@ const Index = () => {
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
+        <TestimonialsSection />
         <ContactSection />
       </main>
       <Footer />

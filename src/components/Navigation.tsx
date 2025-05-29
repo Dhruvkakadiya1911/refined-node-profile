@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,50 +21,55 @@ const Navigation = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'glass shadow-lg' : 'bg-transparent'
+      isScrolled ? 'glass dark:glass-dark shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="text-2xl font-bold text-black">
-            Alex<span className="text-gray-600">Chen</span>
+          <div className="text-2xl font-bold text-black dark:text-white transition-colors duration-300">
+            Alex<span className="text-gray-600 dark:text-gray-400">Chen</span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-black transition-colors duration-200 font-medium relative group"
+                className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-medium relative group"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <Menu className="w-6 h-6" />
-          </button>
+          {/* Mobile Menu Button and Theme Toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <button
+              className="p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <Menu className="w-6 h-6 text-black dark:text-white" />
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden glass rounded-lg mt-2 p-4">
+          <div className="md:hidden glass dark:glass-dark rounded-lg mt-2 p-4">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block py-2 text-gray-700 hover:text-black transition-colors duration-200"
+                className="block py-2 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
