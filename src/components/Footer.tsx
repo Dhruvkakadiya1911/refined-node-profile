@@ -18,7 +18,7 @@ const Footer = () => {
               Made with ❤️ using Node.js & React
             </p>
             <p className="text-sm text-gray-500">
-              © 2024 Alex Chen. All rights reserved.
+              © 2024 Dhruv kakadiya. All rights reserved.
             </p>
           </div>
         </div>
