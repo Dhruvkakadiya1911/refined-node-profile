@@ -37,7 +37,7 @@ const Navigation = () => {
           {/* Logo with magnetic effect */}
           <div className="relative group cursor-pointer">
             <div className="text-3xl font-black text-white dark:text-black transition-all duration-300 group-hover:scale-110">
-              Alex<span className="text-gray-400 dark:text-gray-600">Chen</span>
+              D<span className="text-gray-400 dark:text-gray-600">K</span>
             </div>
             <div className="absolute inset-0 bg-white/20 dark:bg-black/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-150"></div>
           </div>
