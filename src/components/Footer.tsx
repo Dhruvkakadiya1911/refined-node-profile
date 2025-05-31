@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-8 md:mb-0">
             <div className="text-2xl font-bold mb-2">
-              Alex<span className="text-gray-400">Chen</span>
+              Dhruv<span className="text-gray-400">Kakadiya</span>
             </div>
             <p className="text-gray-400">
               Backend Node.js Developer
@@ -18,7 +18,7 @@ const Footer = () => {
               Made with ❤️ using Node.js & React
             </p>
             <p className="text-sm text-gray-500">
-              © 2024 Alex Chen. All rights reserved.
+              © 2024 Dhruv Kakadiya. All rights reserved.
             </p>
           </div>
         </div>
