@@ -15,7 +15,7 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onComplete();
-    }, 3000);
+    }, 1500); // Reduced from 3000 to 1500ms
 
     // Typing animation
     let typeIndex = 0;
@@ -30,9 +30,9 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
             setTypedText('');
             typeIndex = 0;
           }
-        }, 500);
+        }, 300); // Reduced from 500 to 300ms
       }
-    }, 50);
+    }, 40); // Reduced from 50 to 40ms for faster typing
 
     return () => {
       clearTimeout(timer);

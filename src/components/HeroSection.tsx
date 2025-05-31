@@ -2,7 +2,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
-  ArrowDown,
   Download,
   Github,
   Linkedin,
@@ -113,7 +112,7 @@ const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 dark:from-gray-100 dark:via-white dark:to-gray-200 transition-all duration-1000"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 dark:from-gray-100 dark:via-white dark:to-gray-200 transition-all duration-1000 pt-20"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -225,7 +224,7 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* Enhanced Magnetic buttons with improved styling */}
+        {/* Enhanced Magnetic buttons with same design */}
         <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
           <div className="group relative">
             <Button
@@ -243,15 +242,13 @@ const HeroSection = () => {
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white dark:from-gray-800 dark:to-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
             </Button>
-            {/* Enhanced magnetic glow effect */}
             <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
           </div>
 
           <div className="group relative">
             <Button
-              variant="outline"
               size="lg"
-              className="relative z-10 border-2 border-white/50 dark:border-black/50 text-white dark:text-black bg-black/20 dark:bg-white/10 hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white hover:scale-110 transition-all duration-500 text-lg px-10 py-6 rounded-2xl font-bold backdrop-blur-md overflow-hidden"
+              className="relative z-10 bg-gradient-to-r from-white to-gray-100 text-black dark:from-black dark:to-gray-900 dark:text-white hover:scale-110 transition-all duration-500 text-lg px-10 py-6 rounded-2xl font-bold shadow-2xl border-2 border-white/30 dark:border-black/30 backdrop-blur-md overflow-hidden"
               onClick={handleDownloadCV}
             >
               <span className="relative z-10 flex items-center gap-3">
@@ -259,17 +256,9 @@ const HeroSection = () => {
                 Download CV
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/30 dark:from-black/10 dark:to-black/30 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white dark:from-gray-800 dark:to-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
             </Button>
-            <div className="absolute inset-0 bg-white/30 dark:bg-black/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
-          </div>
-        </div>
-
-        {/* Animated scroll indicator */}
-        <div className="animate-bounce">
-          <div className="relative">
-            <ArrowDown className="w-8 h-8 mx-auto text-white/60 dark:text-black/60 animate-pulse" />
-            <div className="absolute inset-0 bg-white/20 dark:bg-black/20 rounded-full blur-md animate-ping"></div>
+            <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
           </div>
         </div>
       </div>
