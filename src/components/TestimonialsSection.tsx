@@ -11,7 +11,7 @@ const TestimonialsSection = () => {
       name: "Sarah Johnson",
       role: "CTO at TechFlow Solutions",
       company: "TechFlow Solutions",
-      content: "Alex's backend development skills are exceptional. He delivered a robust API system that handles our complex business logic flawlessly. His attention to performance optimization reduced our response times by 60%.",
+      content: "Dhruv's backend development skills are exceptional. He delivered a robust API system that handles our complex business logic flawlessly. His attention to performance optimization reduced our response times by 60%.",
       rating: 5,
       avatar: "SJ"
     },
@@ -19,7 +19,7 @@ const TestimonialsSection = () => {
       name: "Michael Chen",
       role: "Lead Developer at StartupHub",
       company: "StartupHub Inc",
-      content: "Working with Alex was a game-changer for our project. His expertise in Node.js and database optimization helped us scale from 100 to 100k+ users seamlessly.",
+      content: "Working with Dhruv was a game-changer for our project. His expertise in Node.js and database optimization helped us scale from 100 to 100k+ users seamlessly.",
       rating: 5,
       avatar: "MC"
     },
@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
       name: "Emily Rodriguez",
       role: "Product Manager at Digital Innovations",
       company: "Digital Innovations",
-      content: "Alex consistently delivered high-quality code ahead of deadlines. His proactive communication and technical insights made our development process smooth and efficient.",
+      content: "Dhruv consistently delivered high-quality code ahead of deadlines. His proactive communication and technical insights made our development process smooth and efficient.",
       rating: 5,
       avatar: "ER"
     }
