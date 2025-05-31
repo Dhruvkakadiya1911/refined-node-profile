@@ -132,6 +132,11 @@
   .neon-glow:hover {
     filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
   }
+
+  /* Radial gradient background */
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+  }
 }
 
 /* Enhanced keyframe animations */
@@ -144,6 +149,20 @@
   }
   66% {
     transform: translateY(-10px) rotate(-2deg);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }
 

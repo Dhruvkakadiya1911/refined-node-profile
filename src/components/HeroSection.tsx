@@ -1,15 +1,14 @@
+
 import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   ArrowDown,
-  Code,
-  Database,
-  Server,
   Download,
   Github,
   Linkedin,
   Twitter,
 } from 'lucide-react';
+import FuturisticHero3D from './FuturisticHero3D';
 
 const HeroSection = () => {
   const [roleText, setRoleText] = useState('');
@@ -118,6 +117,9 @@ const HeroSection = () => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
+      {/* 3D Elements Layer */}
+      <FuturisticHero3D />
+
       {/* Animated background particles */}
       <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => (
@@ -133,6 +135,7 @@ const HeroSection = () => {
           />
         ))}
       </div>
+
       {/* Magnetic cursor follower */}
       <div
         className="absolute w-96 h-96 rounded-full pointer-events-none z-10 opacity-20 transition-all duration-300 ease-out"
@@ -145,6 +148,7 @@ const HeroSection = () => {
           filter: 'blur(40px)',
         }}
       />
+
       {/* Interactive background effect */}
       <div
         className={`absolute inset-0 transition-opacity duration-500 ${
@@ -158,6 +162,7 @@ const HeroSection = () => {
           }px)`,
         }}
       />
+
       <div className="relative z-20 text-center max-w-6xl mx-auto px-4">
         {/* Main heading with gradient text */}
         <div className="mb-4">
@@ -168,19 +173,21 @@ const HeroSection = () => {
           </h1>
         </div>
 
-        {/* Role typing animation */}
-        <div className="mb-12">
-          <h2 className="text-xl md:text-2xl font-mono text-gray-400 dark:text-gray-500">
-            <span className="text-green-400 dark:text-green-500">&gt;</span>{' '}
-            <span className="text-blue-400 dark:text-blue-500">const</span>{' '}
-            <span className="text-yellow-400 dark:text-yellow-500">role</span>{' '}
-            <span className="text-white dark:text-black">=</span>{' '}
-            <span className="text-purple-400 dark:text-purple-500">"</span>
-            <span className="text-white dark:text-black">{roleText}</span>
-            <span className="animate-ping text-white dark:text-black">|</span>
-            <span className="text-purple-400 dark:text-purple-500">"</span>
-            <span className="text-white dark:text-black">;</span>
-          </h2>
+        {/* Centered Role typing animation */}
+        <div className="mb-12 flex justify-center">
+          <div className="bg-black/20 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-black/20 rounded-2xl px-8 py-4">
+            <h2 className="text-lg md:text-xl font-mono text-gray-400 dark:text-gray-500">
+              <span className="text-green-400 dark:text-green-500">&gt;</span>{' '}
+              <span className="text-blue-400 dark:text-blue-500">const</span>{' '}
+              <span className="text-yellow-400 dark:text-yellow-500">role</span>{' '}
+              <span className="text-white dark:text-black">=</span>{' '}
+              <span className="text-purple-400 dark:text-purple-500">"</span>
+              <span className="text-white dark:text-black">{roleText}</span>
+              <span className="animate-ping text-white dark:text-black">|</span>
+              <span className="text-purple-400 dark:text-purple-500">"</span>
+              <span className="text-white dark:text-black">;</span>
+            </h2>
+          </div>
         </div>
 
         {/* Subtitle with typewriter effect */}
@@ -218,39 +225,43 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* Magnetic buttons with hover effects */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
+        {/* Enhanced Magnetic buttons with improved styling */}
+        <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
           <div className="group relative">
             <Button
               size="lg"
-              className="relative z-10 bg-white text-black dark:bg-black dark:text-white hover:scale-110 transition-all duration-500 text-lg px-8 py-4 rounded-full font-bold shadow-2xl overflow-hidden"
+              className="relative z-10 bg-gradient-to-r from-white to-gray-100 text-black dark:from-black dark:to-gray-900 dark:text-white hover:scale-110 transition-all duration-500 text-lg px-10 py-6 rounded-2xl font-bold shadow-2xl border-2 border-white/30 dark:border-black/30 backdrop-blur-md overflow-hidden"
               onClick={() =>
                 document
                   .getElementById('projects')
                   ?.scrollIntoView({ behavior: 'smooth' })
               }
             >
-              <span className="relative z-10">Explore Projects</span>
+              <span className="relative z-10 flex items-center gap-3">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                Explore Projects
+              </span>
               <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white dark:from-gray-800 dark:to-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
             </Button>
-            {/* Magnetic glow effect */}
-            <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
+            {/* Enhanced magnetic glow effect */}
+            <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
           </div>
 
           <div className="group relative">
             <Button
               variant="outline"
               size="lg"
-              className="relative z-10 border-2 border-white dark:border-black text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white hover:scale-110 transition-all duration-500 text-lg px-8 py-4 rounded-full font-bold backdrop-blur-md overflow-hidden"
+              className="relative z-10 border-2 border-white/50 dark:border-black/50 text-white dark:text-black bg-black/20 dark:bg-white/10 hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white hover:scale-110 transition-all duration-500 text-lg px-10 py-6 rounded-2xl font-bold backdrop-blur-md overflow-hidden"
               onClick={handleDownloadCV}
             >
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="relative z-10 flex items-center gap-3">
                 <Download className="w-5 h-5" />
                 Download CV
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/30 dark:from-black/10 dark:to-black/30 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
             </Button>
-            <div className="absolute inset-0 bg-white/30 dark:bg-black/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
+            <div className="absolute inset-0 bg-white/30 dark:bg-black/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
           </div>
         </div>
 
@@ -262,9 +273,10 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
       {/* Enhanced floating code snippet */}
       <div className="absolute bottom-10 right-10 hidden lg:block">
-        <div className="glass dark:glass-dark rounded-2xl p-6 font-mono text-sm backdrop-blur-xl border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group">
+        <div className="bg-black/30 dark:bg-white/10 backdrop-blur-xl rounded-2xl p-6 font-mono text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl">
           <div className="flex items-center space-x-2 mb-4">
             <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
             <div
@@ -296,31 +308,33 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="glass dark:glass-dark rounded-2xl p-6 font-mono text-sm backdrop-blur-xl border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group">
-        <div className="flex items-center space-x-2 mb-4">
-          <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-          <div
-            className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"
-            style={{ animationDelay: '0.2s' }}
-          ></div>
-          <div
-            className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
-            style={{ animationDelay: '0.4s' }}
-          ></div>
-          <span className="text-white/70 dark:text-black/70 ml-4">
-            ~/life.js
-          </span>
-        </div>
-        <div className="space-y-2 group-hover:scale-105 transition-transform duration-300">
-          <div className="text-green-400 dark:text-green-600">// Dev life</div>
-          <div className="text-white dark:text-black">
-            const life = ['code', 'debug', 'eat', 'repeat'];
+      <div className="absolute bottom-10 left-10 hidden lg:block">
+        <div className="bg-black/30 dark:bg-white/10 backdrop-blur-xl rounded-2xl p-6 font-mono text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl">
+          <div className="flex items-center space-x-2 mb-4">
+            <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+            <div
+              className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"
+              style={{ animationDelay: '0.2s' }}
+            ></div>
+            <div
+              className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
+              style={{ animationDelay: '0.4s' }}
+            ></div>
+            <span className="text-white/70 dark:text-black/70 ml-4">
+              ~/life.js
+            </span>
           </div>
-          <div className="text-blue-400 dark:text-blue-600">
-            for (const day of life) {'{'}
+          <div className="space-y-2 group-hover:scale-105 transition-transform duration-300">
+            <div className="text-green-400 dark:text-green-600">// Dev life</div>
+            <div className="text-white dark:text-black">
+              const life = ['code', 'debug', 'eat', 'repeat'];
+            </div>
+            <div className="text-blue-400 dark:text-blue-600">
+              for (const day of life) {'{'}
+            </div>
+            <div className="pl-4 text-purple-400 dark:text-purple-600">console.log('Building dreams...');</div>
+            <div className="text-blue-400 dark:text-blue-600">{'}'}</div>
           </div>
-          <div className="pl-4 text-purple-400 dark:text-purple-600"></div>
-          <div className="text-blue-400 dark:text-blue-600">{'}'}</div>
         </div>
       </div>
     </section>
