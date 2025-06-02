@@ -28,7 +28,7 @@ const CursorEffect = () => {
 
   return (
     <div
-      className="fixed pointer-events-none z-50 mix-blend-difference"
+      className="fixed pointer-events-none z-[1000] mix-blend-difference"
       style={{
         left: position.x - 10,
         top: position.y - 10,
