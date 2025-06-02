@@ -33,23 +33,23 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1000 cursor-default ${
+    <nav className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-1000 pointer-events-auto ${
       isScrolled 
         ? 'bg-black/95 dark:bg-white/95 backdrop-blur-3xl shadow-2xl border-b border-gradient-to-r from-blue-500/30 via-purple-500/30 to-blue-500/30' 
         : 'bg-gradient-to-b from-black/40 dark:from-white/40 to-transparent backdrop-blur-xl'
     }`}>
       {/* Futuristic scroll progress indicator */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent pointer-events-none">
         <div 
           className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 transition-all duration-300 shadow-lg shadow-blue-500/50"
           style={{ width: `${scrollProgress * 100}%` }}
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex justify-between items-center py-4">
           {/* Enhanced futuristic logo */}
-          <div className="relative group cursor-pointer">
+          <div className="relative group cursor-pointer pointer-events-auto">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 {/* Main logo with enhanced effects */}
@@ -63,7 +63,7 @@ const Navigation = () => {
                 </div>
                 
                 {/* Orbiting elements */}
-                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
+                <div className="absolute inset-0 animate-spin pointer-events-none" style={{ animationDuration: '20s' }}>
                   <div className="absolute -top-1 left-1/2 w-1 h-1 bg-blue-400 rounded-full"></div>
                   <div className="absolute top-1/2 -right-1 w-1 h-1 bg-purple-400 rounded-full"></div>
                 </div>
@@ -84,16 +84,16 @@ const Navigation = () => {
             </div>
             
             {/* Enhanced glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 scale-150"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 scale-150 pointer-events-none"></div>
           </div>
 
           {/* Enhanced futuristic desktop navigation with proper cursor */}
-          <div className="hidden md:flex items-center space-x-2">
+          <div className="hidden md:flex items-center space-x-2 pointer-events-auto">
             {navItems.map((item, index) => (
               <div key={item.name} className="relative group">
                 <a
                   href={item.href}
-                  className="relative px-6 py-3 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium rounded-2xl overflow-hidden flex items-center space-x-2 backdrop-blur-sm cursor-pointer"
+                  className="relative px-6 py-3 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium rounded-2xl overflow-hidden flex items-center space-x-2 backdrop-blur-sm cursor-pointer pointer-events-auto z-10"
                   onMouseEnter={() => setHoveredItem(item.name)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
@@ -101,36 +101,36 @@ const Navigation = () => {
                   <span className="relative z-10">{item.name}</span>
                   
                   {/* Futuristic background effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/20 to-cyan-500/10 rounded-2xl transition-all duration-500 ${
+                  <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/20 to-cyan-500/10 rounded-2xl transition-all duration-500 pointer-events-none ${
                     hoveredItem === item.name ? 'scale-100 opacity-100' : 'scale-75 opacity-0'
                   }`}></div>
                   
                   {/* Animated border */}
-                  <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
+                  <div className={`absolute inset-0 rounded-2xl transition-all duration-500 pointer-events-none ${
                     hoveredItem === item.name ? 'border border-blue-500/50' : 'border border-transparent'
                   }`}></div>
                   
                   {/* Holographic underline */}
-                  <div className={`absolute bottom-1 left-1/2 h-0.5 bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 transition-all duration-500 ${
+                  <div className={`absolute bottom-1 left-1/2 h-0.5 bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 transition-all duration-500 pointer-events-none ${
                     hoveredItem === item.name ? 'w-4/5 -translate-x-1/2' : 'w-0 -translate-x-1/2'
                   }`}></div>
                   
                   {/* Futuristic corner brackets */}
-                  <div className={`absolute left-3 top-2 text-blue-400 dark:text-blue-500 text-xs font-mono transition-all duration-300 ${
+                  <div className={`absolute left-3 top-2 text-blue-400 dark:text-blue-500 text-xs font-mono transition-all duration-300 pointer-events-none ${
                     hoveredItem === item.name ? 'opacity-100 transform rotate-0' : 'opacity-0 transform rotate-45'
                   }`}>┌</div>
-                  <div className={`absolute right-3 bottom-2 text-purple-400 dark:text-purple-500 text-xs font-mono transition-all duration-300 ${
+                  <div className={`absolute right-3 bottom-2 text-purple-400 dark:text-purple-500 text-xs font-mono transition-all duration-300 pointer-events-none ${
                     hoveredItem === item.name ? 'opacity-100 transform rotate-0' : 'opacity-0 transform -rotate-45'
                   }`}>┘</div>
                   
                   {/* Scan line effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-all duration-1000 ${
+                  <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-all duration-1000 pointer-events-none ${
                     hoveredItem === item.name ? 'translate-x-full opacity-100' : '-translate-x-full opacity-0'
                   }`} style={{ animation: hoveredItem === item.name ? 'slide-right 2s ease-in-out infinite' : 'none' }}></div>
                 </a>
                 
                 {/* Enhanced particle glow */}
-                <div className={`absolute inset-0 transition-all duration-500 ${
+                <div className={`absolute inset-0 transition-all duration-500 pointer-events-none ${
                   hoveredItem === item.name ? 'opacity-60 scale-150' : 'opacity-0 scale-100'
                 }`}>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/30 to-cyan-500/20 rounded-2xl blur-xl"></div>
@@ -141,11 +141,11 @@ const Navigation = () => {
               </div>
             ))}
             
-            <div className="ml-6 pl-6 border-l border-gradient-to-b from-blue-500/30 via-purple-500/50 to-cyan-500/30">
+            <div className="ml-6 pl-6 border-l border-gradient-to-b from-blue-500/30 via-purple-500/50 to-cyan-500/30 pointer-events-auto">
               <div className="relative">
                 <ThemeToggle />
                 {/* Energy indicator */}
-                <div className="absolute -top-1 -right-1">
+                <div className="absolute -top-1 -right-1 pointer-events-none">
                   <Zap className="w-3 h-3 text-yellow-400 animate-pulse" />
                 </div>
               </div>
@@ -153,10 +153,10 @@ const Navigation = () => {
           </div>
 
           {/* Enhanced futuristic mobile menu */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden flex items-center space-x-4 pointer-events-auto">
             <ThemeToggle />
             <button
-              className="relative p-3 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-md hover:from-blue-500/30 hover:via-purple-500/30 hover:to-cyan-500/30 transition-all duration-500 group border border-blue-500/30 hover:border-purple-500/50 shadow-lg shadow-blue-500/20 cursor-pointer"
+              className="relative p-3 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-md hover:from-blue-500/30 hover:via-purple-500/30 hover:to-cyan-500/30 transition-all duration-500 group border border-blue-500/30 hover:border-purple-500/50 shadow-lg shadow-blue-500/20 cursor-pointer pointer-events-auto z-10"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <div className="relative w-6 h-6">
@@ -168,13 +168,13 @@ const Navigation = () => {
                 }`} />
               </div>
               {/* Holographic glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150 pointer-events-none"></div>
             </button>
           </div>
         </div>
 
         {/* Enhanced futuristic mobile navigation */}
-        <div className={`md:hidden overflow-hidden transition-all duration-700 ${
+        <div className={`md:hidden overflow-hidden transition-all duration-700 pointer-events-auto ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="bg-gradient-to-br from-black/95 via-gray-900/95 to-black/95 dark:from-white/95 dark:via-gray-100/95 dark:to-white/95 backdrop-blur-3xl rounded-3xl mt-4 p-6 border border-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 shadow-2xl shadow-blue-500/20">
@@ -182,7 +182,7 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="flex items-center space-x-4 py-4 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium border-b border-white/10 dark:border-black/10 last:border-b-0 hover:pl-6 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 group cursor-pointer"
+                className="flex items-center space-x-4 py-4 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium border-b border-white/10 dark:border-black/10 last:border-b-0 hover:pl-6 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 group cursor-pointer pointer-events-auto relative z-10"
                 onClick={() => setIsMenuOpen(false)}
                 style={{ 
                   animationDelay: `${index * 0.1}s`,
@@ -193,7 +193,7 @@ const Navigation = () => {
                 <span className="flex-1">{item.name}</span>
                 <Code2 className="w-4 h-4 ml-auto opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
                 {/* Scan line for mobile items */}
-                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top pointer-events-none"></div>
               </a>
             ))}
           </div>
