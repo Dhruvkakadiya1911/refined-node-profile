@@ -1,12 +1,6 @@
-
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  Download,
-  Github,
-  Linkedin,
-  Twitter,
-} from 'lucide-react';
+import { Download } from 'lucide-react';
 import FuturisticHero3D from './FuturisticHero3D';
 
 const HeroSection = () => {
@@ -17,14 +11,17 @@ const HeroSection = () => {
   const [isHovering, setIsHovering] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
-  const roles = [
-    'Backend Developer 👨‍💻',
-    'API Therapist 🧠',
-    'Problem Solver ⚙️',
-    'Data Whisperer 📊',
-    'System Architect 🏗️',
-    'Bug Exterminator 🐛',
-  ];
+  const roles = useMemo(
+    () => [
+      'Backend Developer',
+      'API Therapist',
+      'Problem Solver',
+      'Data Whisperer',
+      'System Architect',
+      'Bug Exterminator',
+    ],
+    []
+  );
 
   // Role typing animation
   useEffect(() => {
@@ -68,21 +65,14 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top,
-        });
-      }
+      const rect = heroRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
     };
 
-    const heroElement = heroRef.current;
-    if (heroElement) {
-      heroElement.addEventListener('mousemove', handleMouseMove);
-      return () =>
-        heroElement.removeEventListener('mousemove', handleMouseMove);
-    }
+    const el = heroRef.current;
+    el?.addEventListener('mousemove', handleMouseMove);
+    return () => el?.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const handleDownloadCV = () => {
@@ -95,32 +85,46 @@ const HeroSection = () => {
     document.body.removeChild(link);
   };
 
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/yourusername', label: 'GitHub' },
-    {
-      icon: Linkedin,
-      href: 'https://linkedin.com/in/yourusername',
-      label: 'LinkedIn',
-    },
-    {
-      icon: Twitter,
-      href: 'https://twitter.com/yourusername',
-      label: 'Twitter',
-    },
+  // const socialLinks = [
+  //   { icon: Github, href: 'https://github.com/yourusername', label: 'GitHub' },
+  //   {
+  //     icon: Linkedin,
+  //     href: 'https://linkedin.com/in/yourusername',
+  //     label: 'LinkedIn',
+  //   },
+  //   {
+  //     icon: Twitter,
+  //     href: 'https://twitter.com/yourusername',
+  //     label: 'Twitter',
+  //   },
+  // ];
+
+  const backendTools = [
+    { text: 'let', color: 'text-yellow-400' },
+    { text: 'const', color: 'text-blue-400' },
+    { text: 'array', color: 'text-green-400' },
+    { text: 'map()', color: 'text-purple-400' },
+    { text: 'Node.js', color: 'text-green-500' },
+    { text: 'Express', color: 'text-gray-300' },
+    { text: 'MongoDB', color: 'text-green-600' },
+    { text: 'API', color: 'text-blue-300' },
+    { text: 'JWT', color: 'text-red-400' },
+    { text: 'Docker', color: 'text-blue-500' },
+    { text: 'Redis', color: 'text-red-500' },
+    { text: 'MySQL', color: 'text-orange-400' },
   ];
 
   return (
     <section
       ref={heroRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 dark:from-gray-100 dark:via-white dark:to-gray-200 transition-all duration-1000 pt-20"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
+      // onMouseEnter={() => setIsHovering(true)}
+      // onMouseLeave={() => setIsHovering(false)}
     >
       {/* 3D Elements Layer */}
       <FuturisticHero3D />
-
       {/* Animated background particles */}
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
@@ -133,10 +137,10 @@ const HeroSection = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Magnetic cursor follower */}
-      <div
+      {/* <div
         className="absolute w-96 h-96 rounded-full pointer-events-none z-10 opacity-20 transition-all duration-300 ease-out"
         style={{
           background:
@@ -146,7 +150,43 @@ const HeroSection = () => {
           }px)`,
           filter: 'blur(40px)',
         }}
-      />
+      /> */}
+
+      {/* Enhanced Mysql logo styled element */}
+      {/* <div
+        className="floating-element absolute bg-orange-500/20 dark:bg-orange-400/20 border border-orange-500/30 dark:border-orange-400/30 rounded-lg p-3 transition-all duration-500 hover:scale-105"
+        style={{
+          top: '40%',
+          left: '15%',
+          animation: 'float 18s ease-in-out infinite', // Slower animation
+          animationDelay: '3s',
+        }}
+      >
+        <div className="text-blue-400 dark:text-blue-500 font-bold text-xs">
+          MYSQL
+        </div>
+      </div> */}
+
+      {backendTools.map((tool, i) => {
+        const randomTop = Math.floor(Math.random() * 70) + 10; // 10%–80%
+        const randomLeft = Math.floor(Math.random() * 70) + 10;
+        const duration = 12 + Math.random() * 6; // 12–18s
+
+        return (
+          <div
+            key={`tool-${i}`}
+            className={`floating-element absolute ${tool.color} font-mono text-sm bg-black/10 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-1 shadow-md hover:scale-105 transition-all duration-500`}
+            style={{
+              top: `${randomTop}%`,
+              left: `${randomLeft}%`,
+              animation: `float ${duration}s ease-in-out infinite`,
+              animationDelay: `${i * 0.3}s`,
+            }}
+          >
+            {tool.text}
+          </div>
+        );
+      })}
 
       {/* Interactive background effect */}
       <div
@@ -161,7 +201,6 @@ const HeroSection = () => {
           }px)`,
         }}
       />
-
       <div className="relative z-20 text-center max-w-6xl mx-auto px-4">
         {/* Main heading with gradient text */}
         <div className="mb-4">
@@ -210,7 +249,7 @@ const HeroSection = () => {
         </div>
 
         {/* Social Links */}
-        <div className="flex justify-center space-x-6 mb-12">
+        {/* <div className="flex justify-center space-x-6 mb-12">
           {socialLinks.map((social) => (
             <a
               key={social.label}
@@ -222,7 +261,7 @@ const HeroSection = () => {
               <social.icon className="w-6 h-6" />
             </a>
           ))}
-        </div>
+        </div> */}
 
         {/* Enhanced Magnetic buttons with same design */}
         <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
@@ -262,9 +301,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-
       {/* Enhanced floating code snippet */}
-      <div className="absolute bottom-10 right-10 hidden lg:block">
+      {/* <div className="absolute bottom-10 right-10 hidden lg:block">
         <div className="bg-black/30 dark:bg-white/10 backdrop-blur-xl rounded-2xl p-6 font-mono text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl">
           <div className="flex items-center space-x-2 mb-4">
             <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
@@ -295,8 +333,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
-
+      </div> */}
       <div className="absolute bottom-10 left-10 hidden lg:block">
         <div className="bg-black/30 dark:bg-white/10 backdrop-blur-xl rounded-2xl p-6 font-mono text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl">
           <div className="flex items-center space-x-2 mb-4">
@@ -314,14 +351,16 @@ const HeroSection = () => {
             </span>
           </div>
           <div className="space-y-2 group-hover:scale-105 transition-transform duration-300">
-            <div className="text-green-400 dark:text-green-600">// Dev life</div>
+            <div className="text-green-400 dark:text-green-600">
+              // Dev life
+            </div>
             <div className="text-white dark:text-black">
               const life = ['code', 'debug', 'eat', 'repeat'];
             </div>
             <div className="text-blue-400 dark:text-blue-600">
               for (const day of life) {'{'}
             </div>
-            <div className="pl-4 text-purple-400 dark:text-purple-600">console.log('Building dreams...');</div>
+            <div className="pl-4 text-purple-400 dark:text-purple-600"></div>
             <div className="text-blue-400 dark:text-blue-600">{'}'}</div>
           </div>
         </div>
