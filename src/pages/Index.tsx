@@ -6,7 +6,7 @@ import AboutSection from '../components/AboutSection';
 import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ExperienceSection from '../components/ExperienceSection';
-import TestimonialsSection from '../components/TestimonialsSection';
+// import TestimonialsSection from '../components/TestimonialsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
@@ -24,9 +24,11 @@ const Index = () => {
 
   return (
     <>
-      {showLoader && <Loader onComplete={handleLoaderComplete} />}
+      {/* {showLoader && <Loader onComplete={handleLoaderComplete} />} */}
       
-      <div className={`min-h-screen bg-white dark:bg-gray-900 transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`min-h-screen bg-white dark:bg-gray-900 transition-all duration-1000 'opacity-100'`}>
+      {/* <div className={`min-h-screen bg-white dark:bg-gray-900 transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}> */}
+
         <Navigation />
         <main>
           <HeroSection />
@@ -34,7 +36,7 @@ const Index = () => {
           <SkillsSection />
           <ProjectsSection />
           <ExperienceSection />
-          <TestimonialsSection />
+          {/* <TestimonialsSection /> */}
           <ContactSection />
         </main>
         <Footer />
