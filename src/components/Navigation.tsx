@@ -28,12 +28,12 @@ const Navigation = () => {
     { name: 'Skills', href: '#skills', icon: '⚡' },
     { name: 'Projects', href: '#projects', icon: '🚀' },
     { name: 'Experience', href: '#experience', icon: '💼' },
-    { name: 'Testimonials', href: '#testimonials', icon: '💬' },
+    // { name: 'Testimonials', href: '#testimonials', icon: '💬' },
     { name: 'Contact', href: '#contact', icon: '📧' },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-1000 pointer-events-auto ${
+    <nav className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-1000 pointer-events-auto ${
       isScrolled 
         ? 'bg-black/95 dark:bg-white/95 backdrop-blur-3xl shadow-2xl border-b border-gradient-to-r from-blue-500/30 via-purple-500/30 to-blue-500/30' 
         : 'bg-gradient-to-b from-black/40 dark:from-white/40 to-transparent backdrop-blur-xl'
@@ -77,7 +77,7 @@ const Navigation = () => {
                 </div>
                 <div className="flex items-center space-x-2 text-xs text-white/60 dark:text-black/60 font-mono">
                   <Terminal className="w-3 h-3 text-cyan-400" />
-                  <span>backend.specialist</span>
+                  <span>backend.alchemist</span>
                   <Cpu className="w-3 h-3 text-purple-400 animate-pulse" />
                 </div>
               </div>
