@@ -27,54 +27,8 @@ const FuturisticHero3D = () => {
     return () => document.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const backendTools = [
-    { text: 'let', color: 'text-yellow-400 dark:text-yellow-500' },
-    { text: 'const', color: 'text-blue-400 dark:text-blue-500' },
-    { text: 'array', color: 'text-green-400 dark:text-green-500' },
-    { text: 'map()', color: 'text-purple-400 dark:text-purple-500' },
-    { text: 'Node.js', color: 'text-green-500 dark:text-green-600' },
-    { text: 'Express', color: 'text-gray-300 dark:text-gray-400' },
-    { text: 'MongoDB', color: 'text-green-600 dark:text-green-700' },
-    { text: 'API', color: 'text-blue-300 dark:text-blue-400' },
-    { text: 'JWT', color: 'text-red-400 dark:text-red-500' },
-    { text: 'Docker', color: 'text-blue-500 dark:text-blue-600' },
-    { text: 'Redis', color: 'text-red-500 dark:text-red-600' },
-    { text: 'MySQL', color: 'text-orange-400 dark:text-orange-500' },
-  ];
-
   return (
     <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Significantly slower floating programming keywords and tools */}
-      {backendTools.map((tool, i) => (
-        <div
-          key={`tool-${i}`}
-          className={`floating-element absolute ${tool.color} font-mono text-sm bg-black/5 dark:bg-white/5 backdrop-blur-sm border border-white/5 dark:border-black/5 rounded-lg px-3 py-1 transition-all duration-1000 hover:scale-105 hover:bg-black/10 dark:hover:bg-white/10`}
-          style={{
-            top: `${Math.random() * 80 + 10}%`,
-            left: `${Math.random() * 80 + 10}%`,
-            animation: `float ${25 + i * 5}s ease-in-out infinite`, // Much slower animation (25-85 seconds)
-            animationDelay: `${i * 1.5}s`, // Increased delay between elements
-            transform: `rotateX(${i * 2}deg) rotateY(${i * 3}deg)`, // Much reduced rotation
-          }}
-        >
-          {tool.text}
-        </div>
-      ))}
-
-      {/* Much slower Postman logo styled element */}
-      <div
-        className="floating-element absolute bg-orange-500/10 dark:bg-orange-400/10 border border-orange-500/20 dark:border-orange-400/20 rounded-lg p-3 transition-all duration-1000 hover:scale-102"
-        style={{
-          top: '20%',
-          right: '15%',
-          animation: 'float 35s ease-in-out infinite', // Much slower
-          animationDelay: '5s',
-        }}
-      >
-        <div className="text-orange-400 dark:text-orange-500 font-bold text-xs">POSTMAN</div>
-        <div className="w-6 h-6 border-2 border-orange-400 dark:border-orange-500 rounded mt-1 transition-colors duration-500"></div>
-      </div>
-
       {/* Much slower code brackets floating */}
       {['{ }', '[ ]', '( )', '< >'].map((bracket, i) => (
         <div

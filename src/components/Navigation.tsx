@@ -33,7 +33,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1000 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1000 cursor-default ${
       isScrolled 
         ? 'bg-black/95 dark:bg-white/95 backdrop-blur-3xl shadow-2xl border-b border-gradient-to-r from-blue-500/30 via-purple-500/30 to-blue-500/30' 
         : 'bg-gradient-to-b from-black/40 dark:from-white/40 to-transparent backdrop-blur-xl'
@@ -87,13 +87,13 @@ const Navigation = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 scale-150"></div>
           </div>
 
-          {/* Enhanced futuristic desktop navigation */}
+          {/* Enhanced futuristic desktop navigation with proper cursor */}
           <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item, index) => (
               <div key={item.name} className="relative group">
                 <a
                   href={item.href}
-                  className="relative px-6 py-3 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium rounded-2xl overflow-hidden flex items-center space-x-2 backdrop-blur-sm"
+                  className="relative px-6 py-3 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium rounded-2xl overflow-hidden flex items-center space-x-2 backdrop-blur-sm cursor-pointer"
                   onMouseEnter={() => setHoveredItem(item.name)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
@@ -156,7 +156,7 @@ const Navigation = () => {
           <div className="md:hidden flex items-center space-x-4">
             <ThemeToggle />
             <button
-              className="relative p-3 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-md hover:from-blue-500/30 hover:via-purple-500/30 hover:to-cyan-500/30 transition-all duration-500 group border border-blue-500/30 hover:border-purple-500/50 shadow-lg shadow-blue-500/20"
+              className="relative p-3 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-md hover:from-blue-500/30 hover:via-purple-500/30 hover:to-cyan-500/30 transition-all duration-500 group border border-blue-500/30 hover:border-purple-500/50 shadow-lg shadow-blue-500/20 cursor-pointer"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <div className="relative w-6 h-6">
@@ -182,7 +182,7 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="flex items-center space-x-4 py-4 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium border-b border-white/10 dark:border-black/10 last:border-b-0 hover:pl-6 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 group"
+                className="flex items-center space-x-4 py-4 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium border-b border-white/10 dark:border-black/10 last:border-b-0 hover:pl-6 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 group cursor-pointer"
                 onClick={() => setIsMenuOpen(false)}
                 style={{ 
                   animationDelay: `${index * 0.1}s`,
