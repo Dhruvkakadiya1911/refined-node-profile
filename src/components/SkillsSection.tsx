@@ -4,7 +4,6 @@ import { Code, Database, Cloud, Server, Zap, Globe } from 'lucide-react';
 
 const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const skills = [
@@ -14,12 +13,13 @@ const SkillsSection = () => {
     { name: 'TypeScript', level: 88, category: 'Language', icon: Code, color: 'from-blue-500 to-blue-700' },
     { name: 'MongoDB', level: 85, category: 'Database', icon: Database, color: 'from-green-500 to-green-700' },
     { name: 'PostgreSQL', level: 82, category: 'Database', icon: Database, color: 'from-blue-600 to-blue-800' },
+    { name: 'MySQL', level: 82, category: 'Database', icon: Database, color: 'from-cyan-600 to-cyan-800' },
     { name: 'Redis', level: 78, category: 'Cache', icon: Zap, color: 'from-red-400 to-red-600' },
     { name: 'AWS', level: 80, category: 'Cloud', icon: Cloud, color: 'from-orange-400 to-orange-600' },
-    { name: 'Docker', level: 85, category: 'DevOps', icon: Globe, color: 'from-cyan-400 to-cyan-600' },
+    // { name: 'Docker', level: 85, category: 'DevOps', icon: Globe, color: 'from-cyan-400 to-cyan-600' },
   ];
 
-  const categories = ['All', 'Backend', 'Database', 'Cloud', 'DevOps'];
+  const categories = ['All', 'Backend', 'Database', 'Cloud'];
   const [activeCategory, setActiveCategory] = useState('All');
 
   const filteredSkills = activeCategory === 'All' 
@@ -48,23 +48,6 @@ const SkillsSection = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        });
-      }
-    };
-
-    const element = sectionRef.current;
-    if (element) {
-      element.addEventListener('mousemove', handleMouseMove);
-      return () => element.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
 
   return (
     <section 
@@ -77,7 +60,7 @@ const SkillsSection = () => {
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `
-            radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.3) 0%, transparent 50%),
+            radial-gradient(circle at 0px 0px, rgba(255,255,255,0.3) 0%, transparent 50%),
             linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
           `,
@@ -188,7 +171,7 @@ const SkillsSection = () => {
         </div>
 
         {/* Enhanced Tech Stack Visualization */}
-        <div className="mt-24 text-center">
+        {/* <div className="mt-24 text-center">
           <h3 className="text-4xl font-black mb-12 text-white dark:text-black">Core Arsenal</h3>
           <div className="flex flex-wrap justify-center items-center gap-6">
             {['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Redis', 'AWS', 'Docker'].map((tech, index) => (
@@ -204,7 +187,7 @@ const SkillsSection = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
