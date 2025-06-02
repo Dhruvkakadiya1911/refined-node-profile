@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Code, Database, Cloud, Server, Zap, Globe } from 'lucide-react';
 
@@ -105,19 +104,19 @@ const SkillsSection = () => {
             return (
               <div
                 key={skill.name}
-                className={`relative group transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`relative group transition-all duration-300 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
                 {/* Main skill card */}
-                <div className="relative bg-white/5 dark:bg-black/5 backdrop-blur-2xl rounded-3xl p-8 hover:bg-white/10 dark:hover:bg-black/10 transition-all duration-500 border border-white/10 dark:border-black/10 group-hover:scale-105 group-hover:shadow-2xl overflow-hidden">
+                <div className="relative bg-white/5 dark:bg-black/5 backdrop-blur-2xl rounded-3xl p-8 hover:bg-white/10 dark:hover:bg-black/10 transition-all duration-300 border border-white/10 dark:border-black/10 group-hover:scale-105 group-hover:shadow-2xl overflow-hidden">
                   
                   {/* Animated background gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-3xl`}></div>
                   
                   {/* Skill header */}
                   <div className="flex items-center justify-between mb-6 relative z-10">
                     <div className="flex items-center space-x-4">
-                      <div className={`p-3 rounded-2xl bg-gradient-to-br ${skill.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`p-3 rounded-2xl bg-gradient-to-br ${skill.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
                         <IconComponent className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -136,10 +135,10 @@ const SkillsSection = () => {
                     <div className="w-full h-3 bg-white/10 dark:bg-black/10 rounded-full overflow-hidden">
                       {/* Animated progress bar */}
                       <div
-                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1500 ease-out relative overflow-hidden`}
+                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-700 ease-out relative overflow-hidden`}
                         style={{
                           width: isVisible ? `${skill.level}%` : '0%',
-                          transitionDelay: `${index * 0.1}s`
+                          transitionDelay: `${index * 0.05}s`
                         }}
                       >
                         {/* Shine effect */}
@@ -149,10 +148,10 @@ const SkillsSection = () => {
                     
                     {/* Floating percentage indicator */}
                     <div 
-                      className="absolute -top-8 bg-white dark:bg-black text-black dark:text-white px-3 py-1 rounded-full text-xs font-bold transition-all duration-1500 shadow-lg"
+                      className="absolute -top-8 bg-white dark:bg-black text-black dark:text-white px-3 py-1 rounded-full text-xs font-bold transition-all duration-700 shadow-lg"
                       style={{
                         left: isVisible ? `${skill.level - 5}%` : '0%',
-                        transitionDelay: `${index * 0.1 + 0.5}s`
+                        transitionDelay: `${index * 0.05 + 0.2}s`
                       }}
                     >
                       {skill.level}%
@@ -160,11 +159,11 @@ const SkillsSection = () => {
                   </div>
 
                   {/* Magnetic hover effect */}
-                  <div className="absolute inset-0 bg-white/5 dark:bg-black/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                  <div className="absolute inset-0 bg-white/5 dark:bg-black/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 blur-xl"></div>
                 </div>
 
                 {/* Glow effect on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 scale-110`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10 scale-110`}></div>
               </div>
             );
           })}
