@@ -30,7 +30,7 @@ const AboutSection = () => {
   const skillTags = [
     { label: "Backend Developer", icon: Server },
     { label: "Creative Thinker", icon: Zap },
-    { label: "JavaScript Lover", icon: Code }
+    { label: "JavaScript Wizard", icon: Code }
   ];
 
   return (
@@ -94,7 +94,7 @@ const AboutSection = () => {
             </div>
 
             {/* Additional stats in minimal style */}
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
+            {/* <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
               <div className="text-center">
                 <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">2.5+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Years</div>
@@ -107,7 +107,7 @@ const AboutSection = () => {
                 <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">25+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">APIs</div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Side - Profile Image */}
@@ -131,7 +131,11 @@ const AboutSection = () => {
                         <div className="w-20 h-20 mx-auto mb-4 bg-gray-900 dark:bg-white rounded-full flex items-center justify-center">
                           <span className="text-xl font-mono font-bold text-white dark:text-gray-900">DK</span>
                         </div>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm font-mono">Profile Image</p>
+                        <img 
+                          src="/public/IMG_4905.jpg" 
+                          alt="Dhruv Kakadiya" 
+                          className="absolute inset-0 w-full h-full object-cover object-center"
+                        />
                       </div>
                     </div>
                     
@@ -146,7 +150,7 @@ const AboutSection = () => {
                 <div className="absolute top-1/2 -right-8 w-4 h-4 border border-gray-900/20 dark:border-white/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
 
                 {/* Code snippet card */}
-                <div className="absolute -top-6 -left-8 hidden lg:block">
+                <div className="absolute -top-20 -left-12 hidden lg:block">
                   <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-900/20 dark:border-white/20 rounded-lg p-3 font-mono text-xs shadow-lg">
                     <div className="flex items-center space-x-1 mb-2">
                       <div className="w-2 h-2 bg-red-400 rounded-full"></div>
@@ -156,7 +160,9 @@ const AboutSection = () => {
                     <div className="text-gray-900 dark:text-white">
                       <div className="text-green-600 dark:text-green-400">// Developer</div>
                       <div>const me = {"{"}</div>
-                      <div className="pl-2 text-blue-600 dark:text-blue-400">passion: "code"</div>
+                      <div className="pl-2 text-blue-600 dark:text-blue-400">firstName: "Dhruv"</div>
+                      <div className="pl-2 text-blue-600 dark:text-blue-400">lastName: "Kakadiya"</div>
+                      <div className="pl-2 text-blue-600 dark:text-blue-400">experience: "2.5+ Years"</div>
                       <div>{"}"}</div>
                     </div>
                   </div>
