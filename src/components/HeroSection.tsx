@@ -104,21 +104,21 @@ const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 dark:from-gray-100 dark:via-white dark:to-gray-200 transition-all duration-1000 pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 dark:from-gray-100 dark:via-white dark:to-gray-200 transition-all duration-1000 pt-16 sm:pt-20 px-2 xs:px-4 sm:px-6 lg:px-8"
     >
       {/* 3D Elements Layer */}
       <FuturisticHero3D />
 
-      {/* Responsive floating backend tools */}
+      {/* Responsive floating backend tools - hidden on mobile */}
       {backendTools.map((tool, i) => {
-        const randomTop = Math.floor(Math.random() * 70) + 10; // 10%–80%
+        const randomTop = Math.floor(Math.random() * 70) + 10;
         const randomLeft = Math.floor(Math.random() * 70) + 10;
-        const duration = 12 + Math.random() * 6; // 12–18s
+        const duration = 12 + Math.random() * 6;
 
         return (
           <div
             key={`tool-${i}`}
-            className={`floating-element absolute ${tool.color} font-mono text-xs sm:text-sm bg-black/10 backdrop-blur-sm border border-white/10 rounded-lg px-2 sm:px-3 py-1 shadow-md hover:scale-105 transition-all duration-500 hidden sm:block`}
+            className={`floating-element absolute ${tool.color} font-mono text-xs sm:text-sm bg-black/10 backdrop-blur-sm border border-white/10 rounded-lg px-2 sm:px-3 py-1 shadow-md hover:scale-105 transition-all duration-500 hidden md:block`}
             style={{
               top: `${randomTop}%`,
               left: `${randomLeft}%`,
@@ -139,32 +139,34 @@ const HeroSection = () => {
         style={{
           background:
             'radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%)',
-          transform: `translate(${mousePosition.x - window.innerWidth / 2}px, ${
-            mousePosition.y - window.innerHeight / 2
+          transform: `translate(${mousePosition.x - (typeof window !== 'undefined' ? window.innerWidth : 0) / 2}px, ${
+            mousePosition.y - (typeof window !== 'undefined' ? window.innerHeight : 0) / 2
           }px)`,
         }}
       />
       
-      <div className="relative z-20 text-center max-w-6xl mx-auto w-full">
-        {/* Main heading with responsive gradient text */}
-        <div className="mb-4 sm:mb-6 lg:mb-8">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-4 sm:mb-6 lg:mb-8 leading-none px-4">
+      <div className="relative z-20 text-center max-w-6xl mx-auto w-full px-2 xs:px-4">
+        {/* Main heading with better mobile typography */}
+        <div className="mb-3 xs:mb-4 sm:mb-6 lg:mb-8">
+          <h1 className="text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-3 xs:mb-4 sm:mb-6 lg:mb-8 leading-tight px-1 xs:px-2 sm:px-4">
             <span className="bg-gradient-to-r from-white via-gray-200 to-white dark:from-black dark:via-gray-800 dark:to-black bg-clip-text text-transparent">
               Hey, I'm Dhruv kakadiya
             </span>
           </h1>
         </div>
 
-        {/* Centered Role typing animation */}
-        <div className="mb-8 sm:mb-12 flex justify-center px-4">
-          <div className="bg-black/20 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-black/20 rounded-xl sm:rounded-2xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 max-w-full overflow-hidden">
-            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-mono text-gray-400 dark:text-gray-500 break-all sm:break-normal">
+        {/* Enhanced responsive typing animation */}
+        <div className="mb-6 xs:mb-8 sm:mb-12 flex justify-center px-1 xs:px-2 sm:px-4">
+          <div className="bg-black/20 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-black/20 rounded-lg xs:rounded-xl sm:rounded-2xl px-2 xs:px-3 sm:px-6 lg:px-8 py-2 xs:py-3 sm:py-4 max-w-full overflow-hidden w-full xs:w-auto">
+            <h2 className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-mono text-gray-400 dark:text-gray-500 break-words">
               <span className="text-green-400 dark:text-green-500">&gt;</span>{' '}
               <span className="text-blue-400 dark:text-blue-500">const</span>{' '}
               <span className="text-yellow-400 dark:text-yellow-500">role</span>{' '}
               <span className="text-white dark:text-black">=</span>{' '}
               <span className="text-purple-400 dark:text-purple-500">"</span>
-              <span className="text-white dark:text-black">{roleText}</span>
+              <span className="text-white dark:text-black inline-block min-w-0 max-w-full break-words">
+                {roleText}
+              </span>
               <span className="animate-ping text-white dark:text-black">|</span>
               <span className="text-purple-400 dark:text-purple-500">"</span>
               <span className="text-white dark:text-black">;</span>
@@ -172,94 +174,94 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Subtitle with responsive typography */}
-        <div className="relative mb-8 sm:mb-12 lg:mb-16 px-4">
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 dark:text-gray-600 font-light max-w-4xl mx-auto leading-relaxed">
+        {/* Better mobile subtitle */}
+        <div className="relative mb-6 xs:mb-8 sm:mb-12 lg:mb-16 px-2 xs:px-4">
+          <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 dark:text-gray-600 font-light max-w-4xl mx-auto leading-relaxed">
             I write{' '}
             <span className="font-bold text-white dark:text-black">code</span>{' '}
             that nobody sees, but everybody{' '}
             <span className="font-bold text-white dark:text-black">uses</span>
           </p>
 
-          {/* Decorative elements - responsive sizing */}
+          {/* Decorative elements - only on larger screens */}
           <div
-            className="absolute -top-4 sm:-top-8 -left-4 sm:-left-8 w-8 sm:w-12 lg:w-16 h-8 sm:h-12 lg:h-16 border-2 border-white/20 dark:border-black/20 rotate-45 animate-spin hidden sm:block"
+            className="absolute -top-4 sm:-top-8 -left-4 sm:-left-8 w-8 sm:w-12 lg:w-16 h-8 sm:h-12 lg:h-16 border-2 border-white/20 dark:border-black/20 rotate-45 animate-spin hidden lg:block"
             style={{ animationDuration: '20s' }}
           ></div>
           <div
-            className="absolute -bottom-4 sm:-bottom-8 -right-4 sm:-right-8 w-6 sm:w-8 lg:w-12 h-6 sm:h-8 lg:h-12 border-2 border-white/30 dark:border-black/30 rotate-45 animate-spin hidden sm:block"
+            className="absolute -bottom-4 sm:-bottom-8 -right-4 sm:-right-8 w-6 sm:w-8 lg:w-12 h-6 sm:h-8 lg:h-12 border-2 border-white/30 dark:border-black/30 rotate-45 animate-spin hidden lg:block"
             style={{ animationDuration: '15s', animationDirection: 'reverse' }}
           ></div>
         </div>
 
-        {/* Enhanced Responsive buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center mb-12 sm:mb-16 lg:mb-20 px-4">
-          <div className="group relative w-full sm:w-auto">
+        {/* Enhanced mobile-first responsive buttons */}
+        <div className="flex flex-col gap-3 xs:gap-4 sm:gap-6 lg:gap-8 justify-center mb-8 xs:mb-12 sm:mb-16 lg:mb-20 px-2 xs:px-4">
+          <div className="group relative w-full">
             <Button
               size="lg"
-              className="relative z-10 bg-gradient-to-r from-white to-gray-100 text-black dark:from-black dark:to-gray-900 dark:text-white hover:scale-105 sm:hover:scale-110 transition-all duration-500 text-base sm:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-6 rounded-xl sm:rounded-2xl font-bold shadow-2xl border-2 border-white/30 dark:border-black/30 backdrop-blur-md overflow-hidden w-full sm:w-auto touch-manipulation min-h-[44px]"
+              className="relative z-10 bg-gradient-to-r from-white to-gray-100 text-black dark:from-black dark:to-gray-900 dark:text-white hover:scale-105 transition-all duration-500 text-sm xs:text-base sm:text-lg px-4 xs:px-6 sm:px-8 lg:px-10 py-3 xs:py-4 sm:py-4 lg:py-6 rounded-lg xs:rounded-xl sm:rounded-2xl font-bold shadow-2xl border-2 border-white/30 dark:border-black/30 backdrop-blur-md overflow-hidden w-full touch-manipulation min-h-[48px] xs:min-h-[52px]"
               onClick={() =>
                 document
                   .getElementById('projects')
                   ?.scrollIntoView({ behavior: 'smooth' })
               }
             >
-              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+              <span className="relative z-10 flex items-center justify-center gap-2 xs:gap-3">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="whitespace-nowrap">Explore Projects</span>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white dark:from-gray-800 dark:to-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
             </Button>
-            <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
+            <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-lg xs:rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
           </div>
 
-          <div className="group relative w-full sm:w-auto">
+          <div className="group relative w-full">
             <Button
               size="lg"
-              className="relative z-10 bg-gradient-to-r from-white to-gray-100 text-black dark:from-black dark:to-gray-900 dark:text-white hover:scale-105 sm:hover:scale-110 transition-all duration-500 text-base sm:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-6 rounded-xl sm:rounded-2xl font-bold shadow-2xl border-2 border-white/30 dark:border-black/30 backdrop-blur-md overflow-hidden w-full sm:w-auto touch-manipulation min-h-[44px]"
+              className="relative z-10 bg-gradient-to-r from-white to-gray-100 text-black dark:from-black dark:to-gray-900 dark:text-white hover:scale-105 transition-all duration-500 text-sm xs:text-base sm:text-lg px-4 xs:px-6 sm:px-8 lg:px-10 py-3 xs:py-4 sm:py-4 lg:py-6 rounded-lg xs:rounded-xl sm:rounded-2xl font-bold shadow-2xl border-2 border-white/30 dark:border-black/30 backdrop-blur-md overflow-hidden w-full touch-manipulation min-h-[48px] xs:min-h-[52px]"
               onClick={handleDownloadCV}
             >
-              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
-                <Download className="w-4 sm:w-5 h-4 sm:h-5" />
+              <span className="relative z-10 flex items-center justify-center gap-2 xs:gap-3">
+                <Download className="w-3 xs:w-4 sm:w-5 h-3 xs:h-4 sm:h-5" />
                 <span className="whitespace-nowrap">Download CV</span>
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-white dark:from-gray-800 dark:to-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
             </Button>
-            <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
+            <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-lg xs:rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>
           </div>
         </div>
       </div>
       
-      {/* Enhanced floating code snippet - responsive positioning */}
-      <div className="absolute bottom-4 sm:bottom-6 lg:bottom-10 left-4 sm:left-6 lg:left-10 hidden md:block">
-        <div className="bg-black/30 dark:bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 font-mono text-xs sm:text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl max-w-[250px] sm:max-w-none">
-          <div className="flex items-center space-x-1 sm:space-x-2 mb-2 sm:mb-4">
-            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-red-500 rounded-full animate-pulse"></div>
+      {/* Enhanced mobile-responsive floating code snippet */}
+      <div className="absolute bottom-2 xs:bottom-4 sm:bottom-6 lg:bottom-10 left-2 xs:left-4 sm:left-6 lg:left-10 hidden sm:block">
+        <div className="bg-black/30 dark:bg-white/10 backdrop-blur-xl rounded-lg xs:rounded-xl sm:rounded-2xl p-2 xs:p-3 sm:p-4 lg:p-6 font-mono text-2xs xs:text-xs sm:text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl max-w-[200px] xs:max-w-[250px] sm:max-w-none">
+          <div className="flex items-center space-x-1 xs:space-x-2 mb-1 xs:mb-2 sm:mb-4">
+            <div className="w-1.5 xs:w-2 sm:w-3 h-1.5 xs:h-2 sm:h-3 bg-red-500 rounded-full animate-pulse"></div>
             <div
-              className="w-2 sm:w-3 h-2 sm:h-3 bg-yellow-500 rounded-full animate-pulse"
+              className="w-1.5 xs:w-2 sm:w-3 h-1.5 xs:h-2 sm:h-3 bg-yellow-500 rounded-full animate-pulse"
               style={{ animationDelay: '0.2s' }}
             ></div>
             <div
-              className="w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full animate-pulse"
+              className="w-1.5 xs:w-2 sm:w-3 h-1.5 xs:h-2 sm:h-3 bg-green-500 rounded-full animate-pulse"
               style={{ animationDelay: '0.4s' }}
             ></div>
-            <span className="text-white/70 dark:text-black/70 ml-2 sm:ml-4 text-xs sm:text-sm">
+            <span className="text-white/70 dark:text-black/70 ml-1 xs:ml-2 sm:ml-4 text-2xs xs:text-xs sm:text-sm">
               ~/life.js
             </span>
           </div>
-          <div className="space-y-1 sm:space-y-2 group-hover:scale-105 transition-transform duration-300">
-            <div className="text-green-400 dark:text-green-600 text-xs sm:text-sm">
+          <div className="space-y-0.5 xs:space-y-1 sm:space-y-2 group-hover:scale-105 transition-transform duration-300">
+            <div className="text-green-400 dark:text-green-600 text-2xs xs:text-xs sm:text-sm">
               // Dev life
             </div>
-            <div className="text-white dark:text-black text-xs sm:text-sm break-all sm:break-normal">
+            <div className="text-white dark:text-black text-2xs xs:text-xs sm:text-sm break-all">
               const life = ['code', 'debug', 'eat', 'repeat'];
             </div>
-            <div className="text-blue-400 dark:text-blue-600 text-xs sm:text-sm">
+            <div className="text-blue-400 dark:text-blue-600 text-2xs xs:text-xs sm:text-sm">
               for (const day of life) {'{'}
             </div>
-            <div className="pl-2 sm:pl-4 text-purple-400 dark:text-purple-600 text-xs sm:text-sm"></div>
-            <div className="text-blue-400 dark:text-blue-600 text-xs sm:text-sm">{'}'}</div>
+            <div className="pl-1 xs:pl-2 sm:pl-4 text-purple-400 dark:text-purple-600 text-2xs xs:text-xs sm:text-sm"></div>
+            <div className="text-blue-400 dark:text-blue-600 text-2xs xs:text-xs sm:text-sm">{'}'}</div>
           </div>
         </div>
       </div>

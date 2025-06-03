@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { Github, Database, Server } from 'lucide-react';
 
@@ -32,6 +33,7 @@ const FuturisticHero3D = () => {
     document.addEventListener('mousemove', handleMouseMove);
     return () => document.removeEventListener('mousemove', handleMouseMove);
   }, []);
+  
   const backendTool = [
     { text: 'Server', left: '10', bottom: '40' },
     { text: 'Database', bottom: '70', right: '10' },
@@ -43,40 +45,6 @@ const FuturisticHero3D = () => {
       ref={containerRef}
       className="absolute inset-0 overflow-hidden pointer-events-none"
     >
-      {/* Much slower code brackets floating */}
-      {/* {['{ }', '[ ]', '( )', '< >'].map((bracket, i) => (
-        <div
-          key={`bracket-${i}`}
-          className="floating-element absolute text-white/20 dark:text-black/20 font-mono text-2xl transition-all duration-1000 hover:text-white/30 dark:hover:text-black/30"
-          style={{
-            top: `${Math.random() * 60 + 20}%`,
-            left: `${Math.random() * 60 + 20}%`,
-            animation: `float ${60 + i * 10}s ease-in-out infinite`, // Much slower (60-90 seconds)
-            animationDelay: `${i * 5}s`, // Further increased delays
-          }}
-        >
-          {bracket}
-        </div>
-      ))} */}
-
-      {/* Much slower database icons */}
-      {/* {[...Array(2)].map((_, i) => (
-        <div
-          key={`db-${i}`}
-          className="floating-element absolute border border-white/10 dark:border-black/10 bg-white/3 dark:bg-black/3 rounded-lg p-2 transition-all duration-1000 hover:bg-white/5 dark:hover:bg-black/5"
-          style={{
-            top: `${40 + i * 20}%`,
-            left: `${20 + i * 30}%`,
-            animation: `float ${40 + i * 5}s ease-in-out infinite`, // Much slower (40-50 seconds)
-            animationDelay: `${i * 4}s`,
-          }}
-        >
-          <div className="w-4 h-4 border border-white/30 dark:border-black/30 rounded-sm mb-1 transition-colors duration-500"></div>
-          <div className="w-4 h-1 bg-white/15 dark:bg-black/15 rounded transition-colors duration-500"></div>
-          <div className="w-3 h-1 bg-white/10 dark:bg-black/10 rounded mt-0.5 transition-colors duration-500"></div>
-        </div>
-      ))} */}
-
       {backendTool.map((tool, i) => {
         const position = {};
 
@@ -87,7 +55,8 @@ const FuturisticHero3D = () => {
 
         return (
           <div
-            className="floating-element absolute border border-white/10 dark:border-black/10 bg-white/3 dark:bg-black/3 rounded-lg p-3 transition-all duration-1000 hover:scale-102"
+            key={`tool-${i}`}
+            className="floating-element absolute border border-white/10 dark:border-black/10 bg-white/3 dark:bg-black/3 rounded-lg p-2 xs:p-3 transition-all duration-1000 hover:scale-102 hidden md:block"
             style={{
               ...position,
               animation: `float 45s ease-in-out infinite`,
@@ -95,13 +64,13 @@ const FuturisticHero3D = () => {
             }}
           >
             {tool.text === 'Server' && (
-              <Server className="w-11 h-11 text-white/20 dark:text-black/20 transition-colors duration-500" />
+              <Server className="w-8 xs:w-9 sm:w-10 md:w-11 h-8 xs:h-9 sm:h-10 md:h-11 text-white/20 dark:text-black/20 transition-colors duration-500" />
             )}
             {tool.text === 'Database' && (
-              <Database className="w-11 h-11 text-white/20 dark:text-black/20 transition-colors duration-500" />
+              <Database className="w-8 xs:w-9 sm:w-10 md:w-11 h-8 xs:h-9 sm:h-10 md:h-11 text-white/20 dark:text-black/20 transition-colors duration-500" />
             )}
             {tool.text === 'Github' && (
-              <Github className="w-11 h-11 text-white/20 dark:text-black/20 transition-colors duration-500" />
+              <Github className="w-8 xs:w-9 sm:w-10 md:w-11 h-8 xs:h-9 sm:h-10 md:h-11 text-white/20 dark:text-black/20 transition-colors duration-500" />
             )}
           </div>
         );
@@ -123,29 +92,29 @@ const FuturisticHero3D = () => {
 
       {/* Much slower abstract geometric shapes */}
       <div
-        className="absolute top-1/4 right-1/4 w-32 h-32 border border-white/5 dark:border-black/5 rotate-45 animate-spin transition-colors duration-1000"
+        className="absolute top-1/4 right-1/4 w-24 xs:w-28 sm:w-32 h-24 xs:h-28 sm:h-32 border border-white/5 dark:border-black/5 rotate-45 animate-spin transition-colors duration-1000 hidden md:block"
         style={{ animationDuration: '80s' }}
       />
       <div
-        className="absolute bottom-1/4 left-1/4 w-24 h-24 border border-white/8 dark:border-black/8 rotate-12 animate-pulse transition-colors duration-1000"
+        className="absolute bottom-1/4 left-1/4 w-20 xs:w-22 sm:w-24 h-20 xs:h-22 sm:h-24 border border-white/8 dark:border-black/8 rotate-12 animate-pulse transition-colors duration-1000 hidden md:block"
         style={{ animationDuration: '12s' }}
       />
 
       {/* Much slower floating glassmorphic card */}
-      <div className="absolute top-1/2 right-11 hidden lg:block">
+      <div className="absolute top-1/2 right-8 xs:right-9 sm:right-10 md:right-11 hidden lg:block">
         <div
-          className="bg-white/2 dark:bg-black/2 backdrop-blur-md border border-white/10 dark:border-black/10 rounded-2xl p-6 transition-all duration-1000 hover:bg-white/5 dark:hover:bg-black/5"
+          className="bg-white/2 dark:bg-black/2 backdrop-blur-md border border-white/10 dark:border-black/10 rounded-xl xs:rounded-2xl p-4 xs:p-5 sm:p-6 transition-all duration-1000 hover:bg-white/5 dark:hover:bg-black/5"
           style={{ animation: 'float 60s ease-in-out infinite' }}
         >
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 border border-white/20 dark:border-black/20 rounded-sm flex items-center justify-center transition-colors duration-500">
-              <div className="w-4 h-4 bg-white/15 dark:bg-black/15 rounded-xs transition-colors duration-500"></div>
+          <div className="flex items-center space-x-2 xs:space-x-3">
+            <div className="w-6 xs:w-7 sm:w-8 h-6 xs:h-7 sm:h-8 border border-white/20 dark:border-black/20 rounded-sm flex items-center justify-center transition-colors duration-500">
+              <div className="w-3 xs:w-3.5 sm:w-4 h-3 xs:h-3.5 sm:h-4 bg-white/15 dark:bg-black/15 rounded-xs transition-colors duration-500"></div>
             </div>
             <div>
-              <div className="text-white/60 dark:text-black/60 text-sm font-mono transition-colors duration-500">
+              <div className="text-white/60 dark:text-black/60 text-xs xs:text-sm font-mono transition-colors duration-500">
                 Backend Dev
               </div>
-              <div className="text-white/40 dark:text-black/40 text-xs transition-colors duration-500">
+              <div className="text-white/40 dark:text-black/40 text-2xs xs:text-xs transition-colors duration-500">
                 API • Database • Server
               </div>
             </div>
@@ -154,13 +123,13 @@ const FuturisticHero3D = () => {
       </div>
 
       {/* Much slower floating particles */}
-      {[...Array(25)].map((_, i) => (
+      {[...Array(16)].map((_, i) => (
         <div
           key={`particle-${i}`}
-          className="absolute w-1 h-1 bg-blue-600/90 dark:bg-black/20 rounded-full transition-colors duration-1000"
+          className="absolute w-0.5 xs:w-1 h-0.5 xs:h-1 bg-blue-600/90 dark:bg-black/20 rounded-full transition-colors duration-1000 hidden sm:block"
           style={{
-            top: `${12.5 * (i + 1)}%`,
-            left: `${12.5 * (i + 1)}%`,
+            top: `${6.25 * (i + 1)}%`,
+            left: `${6.25 * (i + 1)}%`,
           }}
         />
       ))}
