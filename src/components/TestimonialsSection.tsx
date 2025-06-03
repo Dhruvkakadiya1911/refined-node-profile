@@ -64,42 +64,42 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" className="py-12 xs:py-16 sm:py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 px-2 xs:px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8 xs:mb-12 sm:mb-16">
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 xs:mb-4 text-black dark:text-white transition-colors duration-300">
+    <section id="testimonials" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white transition-colors duration-300">
             What Clients Say
           </h2>
-          <p className="text-base xs:text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300 px-2">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
             Testimonials from clients and colleagues I've worked with
           </p>
         </div>
 
         <div className={`relative ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <div className="glass dark:glass-dark rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 transition-all duration-300">
-            <div className="text-center mb-6 xs:mb-8">
-              <div className="flex justify-center mb-3 xs:mb-4">
+          <div className="glass dark:glass-dark rounded-2xl p-8 transition-all duration-300">
+            <div className="text-center mb-8">
+              <div className="flex justify-center mb-4">
                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <Star key={i} className="w-4 xs:w-5 h-4 xs:h-5 text-yellow-400 fill-current" />
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <blockquote className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4 xs:mb-6 transition-colors duration-300">
+              <blockquote className="text-lg md:text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-6 transition-colors duration-300">
                 "{testimonials[currentIndex].content}"
               </blockquote>
             </div>
 
-            <div className="flex items-center justify-center space-x-3 xs:space-x-4">
-              <div className="w-10 xs:w-12 h-10 xs:h-12 bg-black dark:bg-white rounded-full flex items-center justify-center text-white dark:text-black font-bold transition-colors duration-300 text-sm xs:text-base">
+            <div className="flex items-center justify-center space-x-4">
+              <div className="w-12 h-12 bg-black dark:bg-white rounded-full flex items-center justify-center text-white dark:text-black font-bold transition-colors duration-300">
                 {testimonials[currentIndex].avatar}
               </div>
               <div className="text-center">
-                <div className="font-semibold text-black dark:text-white transition-colors duration-300 text-sm xs:text-base">
+                <div className="font-semibold text-black dark:text-white transition-colors duration-300">
                   {testimonials[currentIndex].name}
                 </div>
-                <div className="text-xs xs:text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
                   {testimonials[currentIndex].role}
                 </div>
-                <div className="text-2xs xs:text-xs text-gray-500 dark:text-gray-500 transition-colors duration-300">
+                <div className="text-xs text-gray-500 dark:text-gray-500 transition-colors duration-300">
                   {testimonials[currentIndex].company}
                 </div>
               </div>
@@ -107,20 +107,20 @@ const TestimonialsSection = () => {
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-center items-center mt-6 xs:mt-8 space-x-3 xs:space-x-4">
+          <div className="flex justify-center items-center mt-8 space-x-4">
             <button
               onClick={prevTestimonial}
-              className="p-1.5 xs:p-2 rounded-full glass dark:glass-dark hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 touch-manipulation min-h-[40px] xs:min-h-[44px] min-w-[40px] xs:min-w-[44px]"
+              className="p-2 rounded-full glass dark:glass-dark hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300"
             >
-              <ChevronLeft className="w-4 xs:w-5 h-4 xs:h-5 text-black dark:text-white" />
+              <ChevronLeft className="w-5 h-5 text-black dark:text-white" />
             </button>
 
-            <div className="flex space-x-1 xs:space-x-2">
+            <div className="flex space-x-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-1.5 xs:w-2 h-1.5 xs:h-2 rounded-full transition-all duration-300 touch-manipulation min-h-[32px] min-w-[32px] flex items-center justify-center ${
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex 
                       ? 'bg-black dark:bg-white' 
                       : 'bg-gray-300 dark:bg-gray-600'
@@ -131,9 +131,9 @@ const TestimonialsSection = () => {
 
             <button
               onClick={nextTestimonial}
-              className="p-1.5 xs:p-2 rounded-full glass dark:glass-dark hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 touch-manipulation min-h-[40px] xs:min-h-[44px] min-w-[40px] xs:min-w-[44px]"
+              className="p-2 rounded-full glass dark:glass-dark hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300"
             >
-              <ChevronRight className="w-4 xs:w-5 h-4 xs:h-5 text-black dark:text-white" />
+              <ChevronRight className="w-5 h-5 text-black dark:text-white" />
             </button>
           </div>
         </div>
