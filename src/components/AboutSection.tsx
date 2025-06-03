@@ -92,34 +92,18 @@ const AboutSection = () => {
                 </div>
               ))}
             </div>
-
-            {/* Additional stats in minimal style */}
-            {/* <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
-              <div className="text-center">
-                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">2.5+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Years</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">15+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">25+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">APIs</div>
-              </div>
-            </div> */}
           </div>
 
           {/* Right Side - Profile Image */}
           <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'} relative flex justify-center lg:justify-end`}>
             <div className="relative group">
-              {/* Main image container with organic shape */}
+              {/* Main image container with unique organic shape */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-                {/* Organic blob shape container */}
+                {/* Unique irregular organic shape container */}
                 <div 
                   className="relative w-full h-full animate-float"
                   style={{
-                    clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
+                    clipPath: 'polygon(25% 6%, 75% 0%, 90% 25%, 95% 50%, 85% 85%, 65% 95%, 40% 100%, 15% 85%, 5% 60%, 0% 30%)',
                     filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))'
                   }}
                 >
