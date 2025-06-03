@@ -97,13 +97,13 @@ const AboutSection = () => {
           {/* Right Side - Profile Image */}
           <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'} relative flex justify-center lg:justify-end`}>
             <div className="relative group">
-              {/* Main image container with unique organic shape */}
+              {/* Main image container with rounded organic shape */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-                {/* Unique irregular organic shape container */}
+                {/* Rounded organic shape container */}
                 <div 
-                  className="relative w-full h-full animate-float"
+                  className="relative w-full h-full animate-float overflow-hidden rounded-[3rem]"
                   style={{
-                    clipPath: 'polygon(25% 6%, 75% 0%, 90% 25%, 95% 50%, 85% 85%, 65% 95%, 40% 100%, 15% 85%, 5% 60%, 0% 30%)',
+                    borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
                     filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))'
                   }}
                 >
