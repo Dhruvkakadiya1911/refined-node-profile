@@ -86,21 +86,6 @@ const HeroSection = () => {
     document.body.removeChild(link);
   };
 
-  const backendTools = [
-    { text: 'let', color: 'text-yellow-400' },
-    { text: 'const', color: 'text-blue-400' },
-    { text: 'array', color: 'text-green-400' },
-    { text: 'map()', color: 'text-purple-400' },
-    { text: 'Node.js', color: 'text-green-500' },
-    { text: 'Express', color: 'text-gray-300' },
-    { text: 'MongoDB', color: 'text-green-600' },
-    { text: 'API', color: 'text-blue-300' },
-    { text: 'JWT', color: 'text-red-400' },
-    { text: 'Docker', color: 'text-blue-500' },
-    { text: 'Redis', color: 'text-red-500' },
-    { text: 'MySQL', color: 'text-orange-400' },
-  ];
-
   return (
     <section
       ref={heroRef}
@@ -108,28 +93,6 @@ const HeroSection = () => {
     >
       {/* 3D Elements Layer */}
       <FuturisticHero3D />
-
-      {/* Responsive floating backend tools */}
-      {backendTools.map((tool, i) => {
-        const randomTop = Math.floor(Math.random() * 70) + 10; // 10%–80%
-        const randomLeft = Math.floor(Math.random() * 70) + 10;
-        const duration = 12 + Math.random() * 6; // 12–18s
-
-        return (
-          <div
-            key={`tool-${i}`}
-            className={`floating-element absolute ${tool.color} font-mono text-xs sm:text-sm bg-black/10 backdrop-blur-sm border border-white/10 rounded-lg px-2 sm:px-3 py-1 shadow-md hover:scale-105 transition-all duration-500 hidden sm:block`}
-            style={{
-              top: `${randomTop}%`,
-              left: `${randomLeft}%`,
-              animation: `float ${duration}s ease-in-out infinite`,
-              animationDelay: `${i * 0.3}s`,
-            }}
-          >
-            {tool.text}
-          </div>
-        );
-      })}
 
       {/* Interactive background effect */}
       <div
@@ -157,16 +120,16 @@ const HeroSection = () => {
 
         {/* Centered Role typing animation */}
         <div className="mb-8 sm:mb-12 flex justify-center px-4">
-          <div className="bg-black/20 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-black/20 rounded-xl sm:rounded-2xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 max-w-full overflow-hidden">
-            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-mono text-gray-400 dark:text-gray-500 break-all sm:break-normal">
-              <span className="text-green-400 dark:text-green-500">&gt;</span>{' '}
-              <span className="text-blue-400 dark:text-blue-500">const</span>{' '}
-              <span className="text-yellow-400 dark:text-yellow-500">role</span>{' '}
+          <div className="bg-black/20 dark:bg-white/20 backdrop-blur-md border border-white/20 dark:border-black/20 rounded-xl sm:rounded-2xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 max-w-full overflow-hidden">
+            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-mono text-gray-400 dark:text-gray-600 break-all sm:break-normal">
+              <span className="text-green-400 dark:text-green-600">&gt;</span>{' '}
+              <span className="text-blue-400 dark:text-blue-600">const</span>{' '}
+              <span className="text-yellow-400 dark:text-yellow-600">role</span>{' '}
               <span className="text-white dark:text-black">=</span>{' '}
-              <span className="text-purple-400 dark:text-purple-500">"</span>
+              <span className="text-purple-400 dark:text-purple-600">"</span>
               <span className="text-white dark:text-black">{roleText}</span>
               <span className="animate-ping text-white dark:text-black">|</span>
-              <span className="text-purple-400 dark:text-purple-500">"</span>
+              <span className="text-purple-400 dark:text-purple-600">"</span>
               <span className="text-white dark:text-black">;</span>
             </h2>
           </div>
@@ -174,7 +137,7 @@ const HeroSection = () => {
 
         {/* Subtitle with responsive typography */}
         <div className="relative mb-8 sm:mb-12 lg:mb-16 px-4">
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 dark:text-gray-600 font-light max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 dark:text-gray-700 font-light max-w-4xl mx-auto leading-relaxed">
             I write{' '}
             <span className="font-bold text-white dark:text-black">code</span>{' '}
             that nobody sees, but everybody{' '}
@@ -233,7 +196,7 @@ const HeroSection = () => {
       
       {/* Enhanced floating code snippet - responsive positioning */}
       <div className="absolute bottom-4 sm:bottom-6 lg:bottom-10 left-4 sm:left-6 lg:left-10 hidden md:block">
-        <div className="bg-black/30 dark:bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 font-mono text-xs sm:text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl max-w-[250px] sm:max-w-none">
+        <div className="bg-black/30 dark:bg-white/20 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 font-mono text-xs sm:text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl max-w-[250px] sm:max-w-none">
           <div className="flex items-center space-x-1 sm:space-x-2 mb-2 sm:mb-4">
             <div className="w-2 sm:w-3 h-2 sm:h-3 bg-red-500 rounded-full animate-pulse"></div>
             <div
