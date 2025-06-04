@@ -111,7 +111,7 @@ const ExperienceSection = () => {
                 index % 2 === 0 
                   ? 'left-1 md:right-0 md:left-auto md:translate-x-3' 
                   : 'left-1 md:left-0 md:-translate-x-3'
-              } top-6 animate-pulse shadow-lg shadow-blue-500/50 transition-all duration-300 ${
+              } top-6  shadow-lg shadow-blue-500/50 transition-all duration-300 ${
                 activeCard === index ? 'scale-150' : ''
               }`}>
                 <div className="w-full h-full bg-white rounded-full transform scale-50"></div>
@@ -163,8 +163,7 @@ const ExperienceSection = () => {
                     {exp.technologies.map((tech, techIndex) => (
                       <span
                         key={tech}
-                        className={`bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-mono transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:scale-110 ${
-                          activeCard === index ? 'animate-bounce' : ''
+                        className={`bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-mono transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:scale-110 
                         }`}
                         style={{ animationDelay: `${techIndex * 0.1}s` }}
                       >
