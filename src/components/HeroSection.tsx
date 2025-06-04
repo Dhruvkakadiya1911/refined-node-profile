@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
@@ -138,12 +137,15 @@ const HeroSection = () => {
         {/* Subtitle with responsive typography */}
         <div className="relative mb-8 sm:mb-12 lg:mb-16 px-4">
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 dark:text-gray-700 font-light max-w-4xl mx-auto leading-relaxed">
-            I write{' '}
-            <span className="font-bold text-white dark:text-black">code</span>{' '}
-            that nobody sees, but everybody{' '}
-            <span className="font-bold text-white dark:text-black">uses</span>
+            I build{' '}
+            <span className="font-bold text-white dark:text-black">
+              backend infrastructure
+            </span>{' '}
+            with{' '}
+            <span className="font-bold text-white dark:text-black">
+              Node.js
+            </span>
           </p>
-
           {/* Decorative elements - responsive sizing */}
           <div
             className="absolute -top-4 sm:-top-8 -left-4 sm:-left-8 w-8 sm:w-12 lg:w-16 h-8 sm:h-12 lg:h-16 border-2 border-white/20 dark:border-black/20 rotate-45 animate-spin hidden sm:block"
@@ -193,7 +195,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Enhanced floating code snippet - responsive positioning */}
       <div className="absolute bottom-4 sm:bottom-6 lg:bottom-10 left-4 sm:left-6 lg:left-10 hidden md:block">
         <div className="bg-black/30 dark:bg-white/20 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 font-mono text-xs sm:text-sm border border-white/20 dark:border-black/20 hover:scale-105 transition-all duration-500 group shadow-2xl max-w-[250px] sm:max-w-none">
@@ -222,7 +224,9 @@ const HeroSection = () => {
               for (const day of life) {'{'}
             </div>
             <div className="pl-2 sm:pl-4 text-purple-400 dark:text-purple-600 text-xs sm:text-sm"></div>
-            <div className="text-blue-400 dark:text-blue-600 text-xs sm:text-sm">{'}'}</div>
+            <div className="text-blue-400 dark:text-blue-600 text-xs sm:text-sm">
+              {'}'}
+            </div>
           </div>
         </div>
       </div>
