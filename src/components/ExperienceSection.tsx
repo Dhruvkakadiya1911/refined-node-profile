@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 const ExperienceSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   const experiences = [
     {
@@ -69,9 +70,20 @@ const ExperienceSection = () => {
   }, []);
 
   return (
-    <section id="experience" className="py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+    <section id="experience" className="py-20 bg-white relative overflow-hidden">
+      {/* 3D Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Floating geometric shapes */}
+        <div className="absolute top-10 right-10 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-purple-500/10 transform rotate-45" style={{ animation: 'float 20s ease-in-out infinite' }}></div>
+        <div className="absolute top-1/3 left-5 w-16 h-16 bg-gradient-to-br from-green-500/10 to-blue-500/10 rounded-full" style={{ animation: 'float 15s ease-in-out infinite reverse' }}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-20 h-20 bg-gradient-to-br from-purple-500/10 to-pink-500/10 transform -rotate-12" style={{ animation: 'float 18s ease-in-out infinite' }}></div>
+        
+        {/* Animated lines */}
+        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent transform -translate-y-1/2" style={{ animation: 'pulse 4s ease-in-out infinite' }}></div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
             Experience
           </h2>
@@ -81,57 +93,80 @@ const ExperienceSection = () => {
         </div>
 
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-0.5 w-0.5 h-full bg-gray-200"></div>
+          {/* Enhanced timeline line with gradient */}
+          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-0.5 w-1 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-green-500 rounded-full opacity-50"></div>
 
           {experiences.map((exp, index) => (
             <div
               key={index}
               className={`relative mb-12 ${
                 index % 2 === 0 ? 'md:ml-0 md:mr-auto md:w-1/2 md:pr-8' : 'md:ml-auto md:w-1/2 md:pl-8'
-              } ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
-              style={{ animationDelay: `${index * 0.2}s` }}
+              } ${isVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-20'}`}
+              style={{ animationDelay: `${index * 0.4}s` }}
+              onMouseEnter={() => setActiveCard(index)}
+              onMouseLeave={() => setActiveCard(null)}
             >
-              {/* Timeline dot */}
-              <div className={`absolute w-4 h-4 bg-black rounded-full ${
+              {/* Enhanced timeline dot with pulse effect */}
+              <div className={`absolute w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full ${
                 index % 2 === 0 
-                  ? 'left-2 md:right-0 md:left-auto md:translate-x-2' 
-                  : 'left-2 md:left-0 md:-translate-x-2'
-              } top-6`}></div>
+                  ? 'left-1 md:right-0 md:left-auto md:translate-x-3' 
+                  : 'left-1 md:left-0 md:-translate-x-3'
+              } top-6 animate-pulse shadow-lg shadow-blue-500/50 transition-all duration-300 ${
+                activeCard === index ? 'scale-150' : ''
+              }`}>
+                <div className="w-full h-full bg-white rounded-full transform scale-50"></div>
+              </div>
 
               <div className="ml-12 md:ml-0">
-                <div className="glass rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                <div className={`glass rounded-xl p-6 transition-all duration-500 transform ${
+                  activeCard === index 
+                    ? 'hover:shadow-2xl hover:shadow-blue-500/20 scale-105 rotate-1' 
+                    : 'hover:shadow-lg hover:shadow-gray-500/10'
+                }`}>
                   <div className="mb-4">
-                    <h3 className="text-xl font-bold text-black">{exp.position}</h3>
-                    <div className="text-lg font-semibold text-gray-700">{exp.company}</div>
+                    <h3 className={`text-xl font-bold text-black transition-all duration-300 ${
+                      activeCard === index ? 'text-blue-600' : ''
+                    }`}>{exp.position}</h3>
+                    <div className={`text-lg font-semibold text-gray-700 transition-all duration-300 ${
+                      activeCard === index ? 'text-purple-600' : ''
+                    }`}>{exp.company}</div>
                     <div className="text-sm text-gray-500 flex items-center space-x-4">
-                      <span>{exp.duration}</span>
+                      <span className="transition-all duration-300 hover:text-blue-600">{exp.duration}</span>
                       <span>•</span>
-                      <span>{exp.location}</span>
+                      <span className="transition-all duration-300 hover:text-purple-600">{exp.location}</span>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-gray-600 mb-4 leading-relaxed transition-all duration-300 hover:text-gray-800">
                     {exp.description}
                   </p>
 
                   <div className="mb-4">
                     <h4 className="font-semibold text-black mb-2">Key Achievements:</h4>
-                    <ul className="space-y-1">
+                    <ul className="space-y-2">
                       {exp.achievements.map((achievement, achIndex) => (
-                        <li key={achIndex} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-black rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-gray-600 text-sm">{achievement}</span>
+                        <li 
+                          key={achIndex} 
+                          className={`flex items-start space-x-2 transition-all duration-300 ${
+                            activeCard === index ? 'animate-slide-in-left' : ''
+                          }`}
+                          style={{ animationDelay: `${achIndex * 0.1}s` }}
+                        >
+                          <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0 transition-all duration-300 hover:scale-150"></div>
+                          <span className="text-gray-600 text-sm transition-all duration-300 hover:text-black">{achievement}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
+                    {exp.technologies.map((tech, techIndex) => (
                       <span
                         key={tech}
-                        className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-mono"
+                        className={`bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-mono transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:scale-110 ${
+                          activeCard === index ? 'animate-bounce' : ''
+                        }`}
+                        style={{ animationDelay: `${techIndex * 0.1}s` }}
                       >
                         {tech}
                       </span>
