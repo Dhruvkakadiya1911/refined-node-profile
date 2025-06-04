@@ -24,10 +24,10 @@ const Index = () => {
 
   return (
     <>
-      {/* {showLoader && <Loader onComplete={handleLoaderComplete} />} */}
+      {showLoader && <Loader onComplete={handleLoaderComplete} />}
       
-      <div className={`min-h-screen bg-white dark:bg-gray-900 transition-all duration-1000 'opacity-100'`}>
-      {/* <div className={`min-h-screen bg-white dark:bg-gray-900 transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}> */}
+      {/* <div className={`min-h-screen bg-white dark:bg-gray-900 transition-all duration-1000 'opacity-100'`}> */}
+      <div className={`min-h-screen bg-white dark:bg-gray-900 transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
 
         <Navigation />
         <main>
