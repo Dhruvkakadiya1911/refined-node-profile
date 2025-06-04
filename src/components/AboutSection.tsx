@@ -92,6 +92,22 @@ const AboutSection = () => {
                 </div>
               ))}
             </div>
+
+             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">Add commentMore actions
+              <div className="text-center">
+                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">2.5+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Years</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">15+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Projects</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">25+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">APIs</div>
+              </div>
+            </div>
+            
           </div>
 
           {/* Right Side - Profile Image */}
