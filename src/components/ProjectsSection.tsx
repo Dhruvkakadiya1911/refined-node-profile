@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Github, X, Zap, Sparkles, Layers } from 'lucide-react';
@@ -33,7 +32,7 @@ const ProjectsSection = () => {
       description: 'Scalable REST API for e-commerce platform handling 10k+ daily transactions with payment processing, inventory management, and real-time notifications.',
       technologies: ['Node.js', 'Express', 'MongoDB', 'Redis', 'Stripe', 'Socket.io'],
       features: ['JWT Authentication', 'Payment Processing', 'Real-time Updates', 'Rate Limiting'],
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-slate-100 to-slate-200',
       icon: Zap,
     },
     {
@@ -42,7 +41,7 @@ const ProjectsSection = () => {
       description: 'Designed and implemented microservices architecture for a SaaS application with service discovery, load balancing, and distributed logging.',
       technologies: ['Node.js', 'Docker', 'AWS', 'PostgreSQL', 'RabbitMQ', 'Nginx'],
       features: ['Service Discovery', 'Load Balancing', 'Message Queues', 'Health Monitoring'],
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-blue-50 to-blue-100',
       icon: Layers,
     },
     {
@@ -52,7 +51,7 @@ const ProjectsSection = () => {
       technologies: ['Node.js', 'WebSocket', 'ClickHouse', 'Redis', 'AWS Lambda'],
       features: ['Real-time Processing', 'Data Aggregation', 'Scalable WebSockets', 'Event Streaming'],
       impact: 'Processes 1M+ events daily with sub-second latency',
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-green-50 to-green-100',
       icon: Sparkles,
     },
     {
@@ -61,7 +60,7 @@ const ProjectsSection = () => {
       description: 'Machine learning pipeline for processing and analyzing large datasets with automated feature extraction and model training.',
       technologies: ['Python', 'TensorFlow', 'Apache Kafka', 'Redis', 'Docker'],
       features: ['Automated ML', 'Feature Engineering', 'Model Deployment', 'Real-time Inference'],
-      color: 'from-orange-500 to-red-500',
+      color: 'from-orange-50 to-orange-100',
       icon: Zap,
     },
     {
@@ -70,7 +69,7 @@ const ProjectsSection = () => {
       description: 'Decentralized finance protocol with smart contracts for lending, borrowing, and yield farming on Ethereum blockchain.',
       technologies: ['Solidity', 'Web3.js', 'Hardhat', 'OpenZeppelin', 'IPFS'],
       features: ['Smart Contracts', 'Yield Farming', 'Liquidity Pools', 'Governance Token'],
-      color: 'from-indigo-500 to-purple-500',
+      color: 'from-indigo-50 to-indigo-100',
       icon: Layers,
     },
   ];
@@ -219,34 +218,34 @@ const ProjectsSection = () => {
                 onClick={() => handleProjectClick(project)}
               >
                 {/* Card Container */}
-                <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:-rotate-1">
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-90`} />
+                <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:-rotate-1 bg-white shadow-xl group-hover:shadow-2xl">
+                  {/* Light Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color}`} />
                   
                   {/* Glass Overlay */}
-                  <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
+                  <div className="absolute inset-0 bg-white/50 backdrop-blur-sm" />
                   
                   {/* Hover Glow Effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`} />
                   
                   {/* Content */}
-                  <div className="relative h-full p-8 flex flex-col justify-between text-white">
+                  <div className="relative h-full p-8 flex flex-col justify-between text-gray-800">
                     {/* Header */}
                     <div>
                       <div className="flex items-center justify-between mb-6">
-                        <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-sm transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-                          <IconComponent className="w-8 h-8 text-white" />
+                        <div className="p-3 bg-white/60 shadow-lg rounded-2xl backdrop-blur-sm transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                          <IconComponent className="w-8 h-8 text-gray-700" />
                         </div>
-                        <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center transform transition-all duration-500 group-hover:rotate-180">
-                          <ArrowRight className="w-6 h-6" />
+                        <div className="w-12 h-12 bg-white/40 shadow-md rounded-full flex items-center justify-center transform transition-all duration-500 group-hover:rotate-180">
+                          <ArrowRight className="w-6 h-6 text-gray-600" />
                         </div>
                       </div>
                       
-                      <h3 className="text-2xl font-bold mb-4 transform transition-all duration-300 group-hover:translate-x-2">
+                      <h3 className="text-2xl font-bold mb-4 transform transition-all duration-300 group-hover:translate-x-2 text-gray-900">
                         {project.title}
                       </h3>
                       
-                      <p className="text-white/90 text-sm leading-relaxed mb-6 transform transition-all duration-300 group-hover:translate-x-1">
+                      <p className="text-gray-700 text-sm leading-relaxed mb-6 transform transition-all duration-300 group-hover:translate-x-1">
                         {project.description.substring(0, 120)}...
                       </p>
                     </div>
@@ -257,14 +256,14 @@ const ProjectsSection = () => {
                         {project.technologies.slice(0, 3).map((tech, techIndex) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium transform transition-all duration-300 hover:scale-110 hover:bg-white/30"
+                            className="px-3 py-1 bg-white/70 shadow-sm backdrop-blur-sm rounded-full text-xs font-medium transform transition-all duration-300 hover:scale-110 hover:bg-white/80 text-gray-700"
                             style={{ transitionDelay: `${techIndex * 0.1}s` }}
                           >
                             {tech}
                           </span>
                         ))}
                         {project.technologies.length > 3 && (
-                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium">
+                          <span className="px-3 py-1 bg-white/70 shadow-sm backdrop-blur-sm rounded-full text-xs font-medium text-gray-700">
                             +{project.technologies.length - 3}
                           </span>
                         )}
@@ -272,7 +271,7 @@ const ProjectsSection = () => {
                       
                       {/* Impact Badge */}
                       {project.impact && (
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-400/20 backdrop-blur-sm rounded-full text-xs font-medium">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-100/80 shadow-sm backdrop-blur-sm rounded-full text-xs font-medium text-gray-700">
                           <Sparkles className="w-3 h-3" />
                           {project.impact}
                         </div>
@@ -281,13 +280,13 @@ const ProjectsSection = () => {
                   </div>
 
                   {/* Animated Border */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-white/20 via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ padding: '2px' }}>
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-white/40 via-transparent to-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ padding: '2px' }}>
                     <div className="w-full h-full rounded-3xl bg-transparent" />
                   </div>
                 </div>
 
                 {/* 3D Shadow */}
-                <div className="absolute inset-0 bg-black/20 rounded-3xl transform translate-y-4 translate-x-4 -z-10 transition-all duration-500 group-hover:translate-y-8 group-hover:translate-x-8 blur-lg" />
+                <div className="absolute inset-0 bg-black/10 rounded-3xl transform translate-y-4 translate-x-4 -z-10 transition-all duration-500 group-hover:translate-y-8 group-hover:translate-x-8 blur-lg" />
               </div>
             );
           })}
@@ -299,12 +298,12 @@ const ProjectsSection = () => {
             <Button
               onClick={handleLoadMore}
               disabled={isLoading}
-              className="relative px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-2xl transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-2xl hover:shadow-blue-500/25 group overflow-hidden"
+              className="relative px-12 py-6 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-2xl transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-xl hover:shadow-2xl group overflow-hidden border border-gray-200"
             >
               <span className="relative z-10 flex items-center gap-3">
                 {isLoading ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                    <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-800 rounded-full animate-spin" />
                     Loading...
                   </>
                 ) : (
@@ -314,7 +313,7 @@ const ProjectsSection = () => {
                   </>
                 )}
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
           </div>
         )}
@@ -336,22 +335,22 @@ const ProjectsSection = () => {
           >
             {/* Modal Header */}
             <div className={`relative h-48 bg-gradient-to-br ${selectedProject.color} rounded-t-3xl overflow-hidden`}>
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-white/20" />
               <button
                 onClick={handleCloseModal}
-                className="absolute top-6 right-6 p-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 transform hover:scale-110 hover:rotate-90 group"
+                className="absolute top-6 right-6 p-3 rounded-full bg-white/80 shadow-lg backdrop-blur-sm hover:bg-white/90 transition-all duration-300 transform hover:scale-110 hover:rotate-90 group"
               >
-                <X className="w-6 h-6 text-white" />
+                <X className="w-6 h-6 text-gray-700" />
               </button>
               
-              <div className="absolute bottom-6 left-8 text-white">
+              <div className="absolute bottom-6 left-8 text-gray-800">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
-                    <selectedProject.icon className="w-10 h-10" />
+                  <div className="p-4 bg-white/80 shadow-lg rounded-2xl backdrop-blur-sm">
+                    <selectedProject.icon className="w-10 h-10 text-gray-700" />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold">{selectedProject.title}</h2>
-                    <p className="text-white/90">Advanced Backend System</p>
+                    <h2 className="text-3xl font-bold text-gray-900">{selectedProject.title}</h2>
+                    <p className="text-gray-700">Advanced Backend System</p>
                   </div>
                 </div>
               </div>
@@ -365,7 +364,7 @@ const ProjectsSection = () => {
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 {/* Features */}
                 <div>
-                  <h3 className="font-bold text-xl mb-6 flex items-center gap-3">
+                  <h3 className="font-bold text-xl mb-6 flex items-center gap-3 text-gray-900">
                     <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
                     Key Features
                   </h3>
@@ -373,7 +372,7 @@ const ProjectsSection = () => {
                     {selectedProject.features.map((feature: string, index: number) => (
                       <div 
                         key={feature} 
-                        className="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 transform hover:translate-x-2 group"
+                        className="flex items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 transform hover:translate-x-2 group shadow-sm"
                         style={{ transitionDelay: `${index * 0.1}s` }}
                       >
                         <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full group-hover:scale-150 transition-transform duration-300" />
@@ -385,7 +384,7 @@ const ProjectsSection = () => {
 
                 {/* Technologies */}
                 <div>
-                  <h3 className="font-bold text-xl mb-6 flex items-center gap-3">
+                  <h3 className="font-bold text-xl mb-6 flex items-center gap-3 text-gray-900">
                     <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
                     Technologies
                   </h3>
@@ -393,7 +392,7 @@ const ProjectsSection = () => {
                     {selectedProject.technologies.map((tech: string, index: number) => (
                       <span
                         key={tech}
-                        className="px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-blue-100 hover:to-purple-100 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-110 hover:-rotate-1 cursor-default"
+                        className="px-4 py-2 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-110 hover:-rotate-1 cursor-default shadow-sm text-gray-700"
                         style={{ transitionDelay: `${index * 0.05}s` }}
                       >
                         {tech}
@@ -404,11 +403,11 @@ const ProjectsSection = () => {
               </div>
 
               <div className="flex gap-4 pt-6 border-t border-gray-100">
-                <Button className="flex-1 bg-gradient-to-r from-gray-900 to-gray-700 hover:from-gray-800 hover:to-gray-600 text-white py-4 rounded-xl transition-all duration-300 transform hover:scale-105 group">
+                <Button className="flex-1 bg-gray-900 hover:bg-gray-800 text-white py-4 rounded-xl transition-all duration-300 transform hover:scale-105 group shadow-lg">
                   <Github className="w-5 h-5 mr-3 transition-transform duration-300 group-hover:rotate-12" />
                   View Source Code
                 </Button>
-                <Button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-4 rounded-xl transition-all duration-300 transform hover:scale-105 group">
+                <Button className="flex-1 bg-white hover:bg-gray-50 text-gray-800 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 group border border-gray-200 shadow-lg">
                   Live Demo
                   <ArrowRight className="w-5 h-5 ml-3 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
