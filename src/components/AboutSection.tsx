@@ -92,22 +92,6 @@ const AboutSection = () => {
                 </div>
               ))}
             </div>
-
-             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">Add commentMore actions
-              <div className="text-center">
-                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">2.5+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Years</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">15+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-mono font-bold text-gray-900 dark:text-white">25+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">APIs</div>
-              </div>
-            </div>
-            
           </div>
 
           {/* Right Side - Profile Image */}
@@ -150,7 +134,7 @@ const AboutSection = () => {
                 <div className="absolute top-1/2 -right-4 sm:-right-8 w-3 sm:w-4 h-3 sm:h-4 border border-gray-900/20 dark:border-white/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
 
                 {/* Code snippet card - hidden on mobile, shown on larger screens */}
-                <div className="absolute -top-16 sm:-top-20 -left-8 sm:-left-12 hidden md:block lg:hidden xl:block">
+{/*                 <div className="absolute -top-16 sm:-top-20 -left-8 sm:-left-12 hidden md:block lg:hidden xl:block">
                   <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-900/20 dark:border-white/20 rounded-lg p-2 sm:p-3 font-mono text-xs shadow-lg">
                     <div className="flex items-center space-x-1 mb-2">
                       <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-red-400 rounded-full"></div>
@@ -158,6 +142,24 @@ const AboutSection = () => {
                       <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-400 rounded-full"></div>
                     </div>
                     <div className="text-gray-900 dark:text-white text-xs">
+                      <div className="text-green-600 dark:text-green-400">// Developer</div>
+                      <div>const me = {"{"}</div>
+                      <div className="pl-2 text-blue-600 dark:text-blue-400">firstName: "Dhruv"</div>
+                      <div className="pl-2 text-blue-600 dark:text-blue-400">lastName: "Kakadiya"</div>
+                      <div className="pl-2 text-blue-600 dark:text-blue-400">experience: "2.5+ Years"</div>
+                      <div>{"}"}</div>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+                  <div className="absolute -top-20 -left-12 hidden lg:block">
+                  <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-900/20 dark:border-white/20 rounded-lg p-3 font-mono text-xs shadow-lg">
+                    <div className="flex items-center space-x-1 mb-2">
+                      <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    </div>
+                    <div className="text-gray-900 dark:text-white">
                       <div className="text-green-600 dark:text-green-400">// Developer</div>
                       <div>const me = {"{"}</div>
                       <div className="pl-2 text-blue-600 dark:text-blue-400">firstName: "Dhruv"</div>
