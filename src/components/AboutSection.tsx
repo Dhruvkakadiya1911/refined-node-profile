@@ -116,7 +116,7 @@ const AboutSection = () => {
                           <span className="text-lg sm:text-xl font-mono font-bold text-white dark:text-gray-900">DK</span>
                         </div>
                         <img 
-                          src="/public/IMG_4905.jpg" 
+                          src="/IMG_4905.jpg" 
                           alt="Dhruv Kakadiya" 
                           className="absolute inset-0 w-full h-full object-cover object-center"
                         />
