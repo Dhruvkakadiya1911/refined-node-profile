@@ -1,9 +1,10 @@
-
 import { useTheme } from '../contexts/ThemeContext';
 
 const Footer = () => {
   const { getSectionTheme } = useTheme();
   const sectionTheme = getSectionTheme('footer');
+
+  console.log('Footer sectionTheme:', sectionTheme); // Debug log
 
   return (
     <footer className={`py-8 sm:py-12 lg:py-16 transition-colors duration-1000 ${
@@ -108,6 +109,7 @@ const Footer = () => {
           {/* Tablet navigation - 3 columns for medium screens */}
           <div className="hidden sm:flex md:hidden justify-center">
             <div className="grid grid-cols-3 gap-6 w-full max-w-lg">
+              
               <a 
                 href="#about" 
                 className={`flex items-center justify-center py-3 px-4 text-sm transition-colors rounded-lg touch-manipulation min-h-[48px] ${
@@ -164,6 +166,7 @@ const Footer = () => {
           {/* Desktop navigation - Horizontal layout for large screens */}
           <div className="hidden md:flex justify-center">
             <div className="flex flex-wrap justify-center gap-6 lg:gap-8 xl:gap-12">
+              
               <a 
                 href="#about" 
                 className={`py-2 px-4 lg:px-6 text-sm lg:text-base transition-colors rounded-lg cursor-pointer ${

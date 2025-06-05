@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Github, X, Zap, Sparkles, Layers } from 'lucide-react';
@@ -27,11 +26,9 @@ const ProjectsSection = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
-  const { theme, isTransitioning } = useTheme();
+  const { getSectionTheme, isTransitioning } = useTheme();
 
-  // In dark theme: Projects should be white
-  // In light theme: Projects should be black
-  const sectionTheme = theme === 'dark' ? 'light' : 'dark';
+  const sectionTheme = getSectionTheme('projects');
 
   const projects: Project[] = [
     {
@@ -149,8 +146,8 @@ const ProjectsSection = () => {
           : 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'
       } ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}
     >
-      {/* Floating Elements Background */}
-      <FloatingElements density={25} sectionTheme={sectionTheme} />
+      {/* Floating Elements Background - Fixed prop issue */}
+      <FloatingElements density={25} sectionName="projects" />
 
       {/* Interactive Mouse Trail */}
       <div
