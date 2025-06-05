@@ -15,11 +15,9 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const { theme, isTransitioning } = useTheme();
+  const { getSectionTheme, isTransitioning } = useTheme();
 
-  // In dark theme: Contact should be black
-  // In light theme: Contact should be white
-  const sectionTheme = theme === 'dark' ? 'dark' : 'light';
+  const sectionTheme = getSectionTheme('contact');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,24 +45,24 @@ const ContactSection = () => {
     <section 
       id="contact" 
       className={`py-20 transition-all duration-1000 ${
-        sectionTheme === 'dark' 
-          ? 'bg-black text-white' 
-          : 'bg-white text-black'
+        sectionTheme === 'light' 
+          ? 'bg-white text-black' 
+          : 'bg-black text-white'
       } ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className={`text-4xl md:text-5xl font-bold mb-4 transition-colors duration-1000 ${
-            sectionTheme === 'dark' 
-              ? 'text-white' 
-              : 'text-black'
+            sectionTheme === 'light' 
+              ? 'text-black' 
+              : 'text-white'
           }`}>
             Let's Work Together
           </h2>
           <p className={`text-xl max-w-2xl mx-auto transition-colors duration-1000 ${
-            sectionTheme === 'dark' 
-              ? 'text-gray-300' 
-              : 'text-gray-700'
+            sectionTheme === 'light' 
+              ? 'text-gray-700' 
+              : 'text-gray-300'
           }`}>
             Ready to build something amazing? Let's discuss your next project.
           </p>
@@ -74,14 +72,14 @@ const ContactSection = () => {
           <div className="space-y-8">
             <div>
               <h3 className={`text-2xl font-bold mb-6 transition-colors duration-1000 ${
-                sectionTheme === 'dark' 
-                  ? 'text-white' 
-                  : 'text-black'
+                sectionTheme === 'light' 
+                  ? 'text-black' 
+                  : 'text-white'
               }`}>Get In Touch</h3>
               <p className={`leading-relaxed mb-8 transition-colors duration-1000 ${
-                sectionTheme === 'dark' 
-                  ? 'text-gray-300' 
-                  : 'text-gray-700'
+                sectionTheme === 'light' 
+                  ? 'text-gray-700' 
+                  : 'text-gray-300'
               }`}>
                 I'm always open to discussing new opportunities, interesting projects, 
                 or potential collaborations. Whether you need a backend developer for 
@@ -93,24 +91,24 @@ const ContactSection = () => {
               <a
                 href="mailto:dhruvkakadiya1911@gmail.com"
                 className={`flex items-center space-x-4 transition-colors group ${
-                  sectionTheme === 'dark'
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-gray-700 hover:text-black'
+                  sectionTheme === 'light'
+                    ? 'text-gray-700 hover:text-black'
+                    : 'text-gray-300 hover:text-white'
                 }`}
               >
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${
-                  sectionTheme === 'dark'
-                    ? 'bg-white/10 group-hover:bg-white/20'
-                    : 'bg-black/10 group-hover:bg-black/20'
+                  sectionTheme === 'light'
+                    ? 'bg-black/10 group-hover:bg-black/20'
+                    : 'bg-white/10 group-hover:bg-white/20'
                 }`}>
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="font-medium">Email</div>
                   <div className={`text-sm transition-colors duration-1000 ${
-                    sectionTheme === 'dark' 
-                      ? 'text-gray-400' 
-                      : 'text-gray-600'
+                    sectionTheme === 'light' 
+                      ? 'text-gray-600' 
+                      : 'text-gray-400'
                   }`}>dhruvkakadiya1911@gmail.com</div>
                 </div>
               </a>
@@ -120,24 +118,24 @@ const ContactSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center space-x-4 transition-colors group ${
-                  sectionTheme === 'dark'
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-gray-700 hover:text-black'
+                  sectionTheme === 'light'
+                    ? 'text-gray-700 hover:text-black'
+                    : 'text-gray-300 hover:text-white'
                 }`}
               >
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${
-                  sectionTheme === 'dark'
-                    ? 'bg-white/10 group-hover:bg-white/20'
-                    : 'bg-black/10 group-hover:bg-black/20'
+                  sectionTheme === 'light'
+                    ? 'bg-black/10 group-hover:bg-black/20'
+                    : 'bg-white/10 group-hover:bg-white/20'
                 }`}>
                   <Github className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="font-medium">GitHub</div>
                   <div className={`text-sm transition-colors duration-1000 ${
-                    sectionTheme === 'dark' 
-                      ? 'text-gray-400' 
-                      : 'text-gray-600'
+                    sectionTheme === 'light' 
+                      ? 'text-gray-600' 
+                      : 'text-gray-400'
                   }`}>@Dhruvkakadiya1911</div>
                 </div>
               </a>
@@ -147,24 +145,24 @@ const ContactSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center space-x-4 transition-colors group ${
-                  sectionTheme === 'dark'
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-gray-700 hover:text-black'
+                  sectionTheme === 'light'
+                    ? 'text-gray-700 hover:text-black'
+                    : 'text-gray-300 hover:text-white'
                 }`}
               >
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${
-                  sectionTheme === 'dark'
-                    ? 'bg-white/10 group-hover:bg-white/20'
-                    : 'bg-black/10 group-hover:bg-black/20'
+                  sectionTheme === 'light'
+                    ? 'bg-black/10 group-hover:bg-black/20'
+                    : 'bg-white/10 group-hover:bg-white/20'
                 }`}>
                   <Linkedin className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="font-medium">LinkedIn</div>
                   <div className={`text-sm transition-colors duration-1000 ${
-                    sectionTheme === 'dark' 
-                      ? 'text-gray-400' 
-                      : 'text-gray-600'
+                    sectionTheme === 'light' 
+                      ? 'text-gray-600' 
+                      : 'text-gray-400'
                   }`}>Dhruv Kakadiya</div>
                 </div>
               </a>
@@ -172,14 +170,14 @@ const ContactSection = () => {
           </div>
 
           <div className={`rounded-2xl p-8 backdrop-blur-md border transition-all duration-1000 ${
-            sectionTheme === 'dark'
-              ? 'bg-black/10 border-black/20'
-              : 'bg-white/10 border-white/20'
+            sectionTheme === 'light'
+              ? 'bg-white/10 border-white/20'
+              : 'bg-black/10 border-black/20'
           }`}>
             <h3 className={`text-2xl font-bold mb-6 transition-colors duration-1000 ${
-              sectionTheme === 'dark' 
-                ? 'text-white' 
-                : 'text-black'
+              sectionTheme === 'light' 
+                ? 'text-black' 
+                : 'text-white'
             }`}>Send a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -192,9 +190,9 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   className={`border transition-all duration-1000 ${
-                    sectionTheme === 'dark'
-                      ? 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-white/40'
-                      : 'bg-black/10 border-black/20 text-black placeholder-gray-600 focus:border-black/40'
+                    sectionTheme === 'light'
+                      ? 'bg-black/10 border-black/20 text-black placeholder-gray-600 focus:border-black/40'
+                      : 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-white/40'
                   }`}
                 />
               </div>
@@ -208,9 +206,9 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   className={`border transition-all duration-1000 ${
-                    sectionTheme === 'dark'
-                      ? 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-white/40'
-                      : 'bg-black/10 border-black/20 text-black placeholder-gray-600 focus:border-black/40'
+                    sectionTheme === 'light'
+                      ? 'bg-black/10 border-black/20 text-black placeholder-gray-600 focus:border-black/40'
+                      : 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-white/40'
                   }`}
                 />
               </div>
@@ -224,9 +222,9 @@ const ContactSection = () => {
                   required
                   rows={5}
                   className={`border resize-none transition-all duration-1000 ${
-                    sectionTheme === 'dark'
-                      ? 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-white/40'
-                      : 'bg-black/10 border-black/20 text-black placeholder-gray-600 focus:border-black/40'
+                    sectionTheme === 'light'
+                      ? 'bg-black/10 border-black/20 text-black placeholder-gray-600 focus:border-black/40'
+                      : 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-white/40'
                   }`}
                 />
               </div>
@@ -235,9 +233,9 @@ const ContactSection = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={`w-full transition-all duration-300 disabled:opacity-50 hover:scale-105 ${
-                  sectionTheme === 'dark'
-                    ? 'bg-white text-black hover:bg-gray-200'
-                    : 'bg-black text-white hover:bg-gray-800'
+                  sectionTheme === 'light'
+                    ? 'bg-black text-white hover:bg-gray-800'
+                    : 'bg-white text-black hover:bg-gray-200'
                 }`}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}

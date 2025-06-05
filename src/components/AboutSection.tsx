@@ -1,15 +1,12 @@
-
 import { useEffect, useState } from 'react';
 import { Code, Database, Server, Zap, Award, Coffee } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { theme, isTransitioning } = useTheme();
+  const { getSectionTheme, isTransitioning } = useTheme();
 
-  // In dark theme: About should be white
-  // In light theme: About should be black
-  const sectionTheme = theme === 'dark' ? 'light' : 'dark';
+  const sectionTheme = getSectionTheme('about');
 
   useEffect(() => {
     const observer = new IntersectionObserver(

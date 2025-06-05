@@ -1,12 +1,15 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X, Code2, Terminal, Zap, Cpu } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,8 +36,12 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-500 pointer-events-auto ${
       isScrolled 
-        ? 'bg-black/95 dark:bg-white/95 backdrop-blur-3xl shadow-2xl border-b border-gradient-to-r from-blue-500/30 via-purple-500/30 to-blue-500/30' 
-        : 'bg-gradient-to-b from-black/40 dark:from-white/40 to-transparent backdrop-blur-xl'
+        ? theme === 'dark'
+          ? 'bg-black/95 backdrop-blur-3xl shadow-2xl border-b border-gradient-to-r from-blue-500/30 via-purple-500/30 to-blue-500/30' 
+          : 'bg-white/95 backdrop-blur-3xl shadow-2xl border-b border-gradient-to-r from-blue-500/30 via-purple-500/30 to-blue-500/30'
+        : theme === 'dark'
+          ? 'bg-gradient-to-b from-black/40 to-transparent backdrop-blur-xl'
+          : 'bg-gradient-to-b from-white/40 to-transparent backdrop-blur-xl'
     }`}>
       {/* Futuristic scroll progress indicator */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent pointer-events-none">
@@ -68,12 +75,16 @@ const Navigation = () => {
               </div>
               
               <div className="hidden sm:flex flex-col">
-                <div className="text-xs lg:text-sm text-white/80 dark:text-black/80 font-mono transition-colors duration-300 mb-1">
+                <div className={`text-xs lg:text-sm font-mono transition-colors duration-300 mb-1 ${
+                  theme === 'dark' ? 'text-white/80' : 'text-black/80'
+                }`}>
                   <span className="text-blue-400 dark:text-blue-500">&lt;</span>
                   <span>developer</span>
                   <span className="text-blue-400 dark:text-blue-500">/&gt;</span>
                 </div>
-                <div className="flex items-center space-x-1 sm:space-x-2 text-xs text-white/60 dark:text-black/60 font-mono">
+                <div className={`flex items-center space-x-1 sm:space-x-2 text-xs font-mono ${
+                  theme === 'dark' ? 'text-white/60' : 'text-black/60'
+                }`}>
                   <Terminal className="w-2.5 sm:w-3 h-2.5 sm:h-3 text-cyan-400" />
                   <span className="hidden lg:inline">backend.alchemist</span>
                   <span className="lg:hidden">backend</span>
@@ -92,7 +103,11 @@ const Navigation = () => {
               <div key={item.name} className="relative group">
                 <a
                   href={item.href}
-                  className="relative px-3 xl:px-6 py-2 xl:py-3 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-300 font-medium rounded-xl xl:rounded-2xl overflow-hidden flex items-center space-x-1 xl:space-x-2 backdrop-blur-sm cursor-pointer pointer-events-auto z-10 text-sm xl:text-base touch-manipulation min-h-[44px]"
+                  className={`relative px-3 xl:px-6 py-2 xl:py-3 transition-all duration-300 font-medium rounded-xl xl:rounded-2xl overflow-hidden flex items-center space-x-1 xl:space-x-2 backdrop-blur-sm cursor-pointer pointer-events-auto z-10 text-sm xl:text-base touch-manipulation min-h-[44px] ${
+                    theme === 'dark'
+                      ? 'text-white hover:text-blue-300'
+                      : 'text-black hover:text-blue-700'
+                  }`}
                   onMouseEnter={() => setHoveredItem(item.name)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
@@ -153,12 +168,12 @@ const Navigation = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <div className="relative w-5 sm:w-6 h-5 sm:h-6">
-                <Menu className={`absolute inset-0 w-5 sm:w-6 h-5 sm:h-6 text-blue-300 dark:text-blue-700 transition-all duration-500 ${
+                <Menu className={`absolute inset-0 w-5 sm:w-6 h-5 sm:h-6 transition-all duration-500 ${
                   isMenuOpen ? 'opacity-0 rotate-180 scale-75' : 'opacity-100 rotate-0 scale-100'
-                }`} />
-                <X className={`absolute inset-0 w-5 sm:w-6 h-5 sm:h-6 text-purple-300 dark:text-purple-700 transition-all duration-500 ${
+                } ${theme === 'dark' ? 'text-blue-300' : 'text-blue-700'}`} />
+                <X className={`absolute inset-0 w-5 sm:w-6 h-5 sm:h-6 transition-all duration-500 ${
                   isMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-75'
-                }`} />
+                } ${theme === 'dark' ? 'text-purple-300' : 'text-purple-700'}`} />
               </div>
               {/* Holographic glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-xl sm:rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150 pointer-events-none"></div>
@@ -170,12 +185,20 @@ const Navigation = () => {
         <div className={`lg:hidden overflow-hidden transition-all duration-700 pointer-events-auto ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="bg-gradient-to-br from-black/95 via-gray-900/95 to-black/95 dark:from-white/95 dark:via-gray-100/95 dark:to-white/95 backdrop-blur-3xl rounded-2xl sm:rounded-3xl mt-4 p-4 sm:p-6 border border-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 shadow-2xl shadow-blue-500/20">
+          <div className={`backdrop-blur-3xl rounded-2xl sm:rounded-3xl mt-4 p-4 sm:p-6 border border-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 shadow-2xl shadow-blue-500/20 ${
+            theme === 'dark'
+              ? 'bg-gradient-to-br from-black/95 via-gray-900/95 to-black/95'
+              : 'bg-gradient-to-br from-white/95 via-gray-100/95 to-white/95'
+          }`}>
             {navItems.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="flex items-center space-x-3 sm:space-x-4 py-3 sm:py-4 text-white dark:text-black hover:text-blue-300 dark:hover:text-blue-700 transition-all duration-500 font-medium border-b border-white/10 dark:border-black/10 last:border-b-0 hover:pl-4 sm:hover:pl-6 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 group cursor-pointer pointer-events-auto relative z-10 text-sm sm:text-base touch-manipulation min-h-[44px]"
+                className={`flex items-center space-x-3 sm:space-x-4 py-3 sm:py-4 transition-all duration-500 font-medium border-b last:border-b-0 hover:pl-4 sm:hover:pl-6 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 group cursor-pointer pointer-events-auto relative z-10 text-sm sm:text-base touch-manipulation min-h-[44px] ${
+                  theme === 'dark'
+                    ? 'text-white hover:text-blue-300 border-white/10'
+                    : 'text-black hover:text-blue-700 border-black/10'
+                }`}
                 onClick={() => setIsMenuOpen(false)}
                 style={{ 
                   animationDelay: `${index * 0.1}s`,

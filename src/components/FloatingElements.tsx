@@ -4,10 +4,10 @@ import { useTheme } from '../contexts/ThemeContext';
 
 interface FloatingElementsProps {
   density?: number;
-  sectionTheme?: 'light' | 'dark';
+  sectionName?: string;
 }
 
-const FloatingElements = ({ density = 30, sectionTheme = 'light' }: FloatingElementsProps) => {
+const FloatingElements = ({ density = 30, sectionName = 'hero' }: FloatingElementsProps) => {
   const [elements, setElements] = useState<Array<{
     id: number;
     x: number;
@@ -17,6 +17,9 @@ const FloatingElements = ({ density = 30, sectionTheme = 'light' }: FloatingElem
     duration: number;
     shape: 'circle' | 'square' | 'triangle';
   }>>([]);
+  
+  const { getSectionTheme } = useTheme();
+  const sectionTheme = getSectionTheme(sectionName);
 
   useEffect(() => {
     const newElements = Array.from({ length: density }, (_, i) => ({

@@ -7,6 +7,7 @@ interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
   isTransitioning: boolean;
+  getSectionTheme: (sectionName: string) => 'light' | 'dark';
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -45,8 +46,35 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }, 50);
   };
 
+  const getSectionTheme = (sectionName: string): 'light' | 'dark' => {
+    const sectionThemes = {
+      dark: {
+        // When dark theme is selected
+        hero: 'dark',       // black
+        about: 'light',     // white
+        skills: 'dark',     // black
+        projects: 'light',  // white
+        experience: 'dark', // black
+        contact: 'light',   // white
+        footer: 'light'     // white
+      },
+      light: {
+        // When light theme is selected
+        hero: 'light',      // white
+        about: 'dark',      // black
+        skills: 'light',    // white
+        projects: 'dark',   // black
+        experience: 'light', // white
+        contact: 'dark',    // black
+        footer: 'light'     // white
+      }
+    };
+
+    return sectionThemes[theme][sectionName as keyof typeof sectionThemes.dark] || 'light';
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, isTransitioning }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isTransitioning, getSectionTheme }}>
       {children}
     </ThemeContext.Provider>
   );

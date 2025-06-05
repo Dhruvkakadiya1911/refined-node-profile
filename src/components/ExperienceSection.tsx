@@ -1,15 +1,12 @@
-
 import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const ExperienceSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  const { theme, isTransitioning } = useTheme();
+  const { getSectionTheme, isTransitioning } = useTheme();
 
-  // In dark theme: Experience should be black
-  // In light theme: Experience should be white
-  const sectionTheme = theme === 'dark' ? 'dark' : 'light';
+  const sectionTheme = getSectionTheme('experience');
 
   const experiences = [
     {
@@ -79,51 +76,51 @@ const ExperienceSection = () => {
     <section 
       id="experience" 
       className={`py-20 relative overflow-hidden transition-all duration-1000 ${
-        sectionTheme === 'light' 
-          ? 'bg-white' 
-          : 'bg-gray-900'
+        sectionTheme === 'dark' 
+          ? 'bg-gray-900' 
+          : 'bg-white'
       } ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}
     >
       {/* 3D Background Elements with theme awareness */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Floating geometric shapes */}
         <div className={`absolute top-10 right-10 w-24 h-24 transform rotate-45 transition-all duration-1000 ${
-          sectionTheme === 'light'
-            ? 'bg-gradient-to-br from-blue-500/10 to-purple-500/10'
-            : 'bg-gradient-to-br from-blue-500/20 to-purple-500/20'
+          sectionTheme === 'dark'
+            ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20'
+            : 'bg-gradient-to-br from-blue-500/10 to-purple-500/10'
         }`} style={{ animation: 'float 20s ease-in-out infinite' }}></div>
         <div className={`absolute top-1/3 left-5 w-16 h-16 rounded-full transition-all duration-1000 ${
-          sectionTheme === 'light'
-            ? 'bg-gradient-to-br from-green-500/10 to-blue-500/10'
-            : 'bg-gradient-to-br from-green-500/20 to-blue-500/20'
+          sectionTheme === 'dark'
+            ? 'bg-gradient-to-br from-green-500/20 to-blue-500/20'
+            : 'bg-gradient-to-br from-green-500/10 to-blue-500/10'
         }`} style={{ animation: 'float 15s ease-in-out infinite reverse' }}></div>
         <div className={`absolute bottom-1/4 right-1/4 w-20 h-20 transform -rotate-12 transition-all duration-1000 ${
-          sectionTheme === 'light'
-            ? 'bg-gradient-to-br from-purple-500/10 to-pink-500/10'
-            : 'bg-gradient-to-br from-purple-500/20 to-pink-500/20'
+          sectionTheme === 'dark'
+            ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20'
+            : 'bg-gradient-to-br from-purple-500/10 to-pink-500/10'
         }`} style={{ animation: 'float 18s ease-in-out infinite' }}></div>
         
         {/* Animated lines */}
         <div className={`absolute top-1/2 left-0 w-full h-px transform -translate-y-1/2 transition-all duration-1000 ${
-          sectionTheme === 'light'
-            ? 'bg-gradient-to-r from-transparent via-blue-500/20 to-transparent'
-            : 'bg-gradient-to-r from-transparent via-blue-500/40 to-transparent'
+          sectionTheme === 'dark'
+            ? 'bg-gradient-to-r from-transparent via-blue-500/40 to-transparent'
+            : 'bg-gradient-to-r from-transparent via-blue-500/20 to-transparent'
         }`} style={{ animation: 'pulse 4s ease-in-out infinite' }}></div>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'animate-fade-in opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h2 className={`text-4xl md:text-5xl font-bold mb-4 transition-colors duration-1000 ${
-            sectionTheme === 'light' 
-              ? 'text-black' 
-              : 'text-white'
+            sectionTheme === 'dark' 
+              ? 'text-white' 
+              : 'text-black'
           }`}>
             Experience
           </h2>
           <p className={`text-xl max-w-2xl mx-auto transition-colors duration-1000 ${
-            sectionTheme === 'light' 
-              ? 'text-gray-600' 
-              : 'text-gray-300'
+            sectionTheme === 'dark' 
+              ? 'text-gray-300' 
+              : 'text-gray-600'
           }`}>
             My journey in backend development and system architecture
           </p>
@@ -156,9 +153,9 @@ const ExperienceSection = () => {
 
               <div className="ml-12 md:ml-0">
                 <div className={`backdrop-blur-sm rounded-xl p-6 transition-all duration-500 transform border ${
-                  sectionTheme === 'light'
-                    ? 'bg-white/10 border-gray-900/10 hover:border-gray-900/20'
-                    : 'bg-white/5 border-white/10 hover:border-white/20'
+                  sectionTheme === 'dark'
+                    ? 'bg-white/5 border-white/10 hover:border-white/20'
+                    : 'bg-white/10 border-gray-900/10 hover:border-gray-900/20'
                 } ${
                   activeCard === index 
                     ? 'hover:shadow-2xl hover:shadow-blue-500/20 scale-105 rotate-1' 
@@ -166,19 +163,19 @@ const ExperienceSection = () => {
                 }`}>
                   <div className="mb-4">
                     <h3 className={`text-xl font-bold transition-all duration-300 ${
-                      sectionTheme === 'light'
-                        ? activeCard === index ? 'text-blue-600' : 'text-black'
-                        : activeCard === index ? 'text-blue-400' : 'text-white'
+                      sectionTheme === 'dark'
+                        ? activeCard === index ? 'text-blue-400' : 'text-white'
+                        : activeCard === index ? 'text-blue-600' : 'text-black'
                     }`}>{exp.position}</h3>
                     <div className={`text-lg font-semibold transition-all duration-300 ${
-                      sectionTheme === 'light'
-                        ? activeCard === index ? 'text-purple-600' : 'text-gray-700'
-                        : activeCard === index ? 'text-purple-400' : 'text-gray-300'
+                      sectionTheme === 'dark'
+                        ? activeCard === index ? 'text-purple-400' : 'text-gray-300'
+                        : activeCard === index ? 'text-purple-600' : 'text-gray-700'
                     }`}>{exp.company}</div>
                     <div className={`text-sm flex items-center space-x-4 transition-colors duration-1000 ${
-                      sectionTheme === 'light' 
-                        ? 'text-gray-500' 
-                        : 'text-gray-400'
+                      sectionTheme === 'dark' 
+                        ? 'text-gray-400' 
+                        : 'text-gray-500'
                     }`}>
                       <span className="transition-all duration-300 hover:text-blue-600">{exp.duration}</span>
                       <span>•</span>
@@ -187,18 +184,18 @@ const ExperienceSection = () => {
                   </div>
 
                   <p className={`mb-4 leading-relaxed transition-all duration-300 ${
-                    sectionTheme === 'light'
-                      ? 'text-gray-600 hover:text-gray-800'
-                      : 'text-gray-300 hover:text-gray-100'
+                    sectionTheme === 'dark'
+                      ? 'text-gray-300 hover:text-gray-100'
+                      : 'text-gray-600 hover:text-gray-800'
                   }`}>
                     {exp.description}
                   </p>
 
                   <div className="mb-4">
                     <h4 className={`font-semibold mb-2 transition-colors duration-1000 ${
-                      sectionTheme === 'light' 
-                        ? 'text-black' 
-                        : 'text-white'
+                      sectionTheme === 'dark' 
+                        ? 'text-white' 
+                        : 'text-black'
                     }`}>Key Achievements:</h4>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, achIndex) => (
@@ -211,9 +208,9 @@ const ExperienceSection = () => {
                         >
                           <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0 transition-all duration-300 hover:scale-150"></div>
                           <span className={`text-sm transition-all duration-300 ${
-                            sectionTheme === 'light'
-                              ? 'text-gray-600 hover:text-black'
-                              : 'text-gray-300 hover:text-white'
+                            sectionTheme === 'dark'
+                              ? 'text-gray-300 hover:text-white'
+                              : 'text-gray-600 hover:text-black'
                           }`}>{achievement}</span>
                         </li>
                       ))}
@@ -225,9 +222,9 @@ const ExperienceSection = () => {
                       <span
                         key={tech}
                         className={`px-3 py-1 rounded-full text-xs font-mono transition-all duration-300 hover:scale-110 ${
-                          sectionTheme === 'light'
-                            ? 'bg-gray-100 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white'
-                            : 'bg-gray-800 text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white'
+                          sectionTheme === 'dark'
+                            ? 'bg-gray-800 text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white'
                         }`}
                         style={{ animationDelay: `${techIndex * 0.1}s` }}
                       >
