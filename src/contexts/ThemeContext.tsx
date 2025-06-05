@@ -18,7 +18,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
+    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
       setTheme(savedTheme);
     } else {
       // Check system preference
@@ -50,23 +50,23 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const sectionThemes = {
       dark: {
         // When dark theme is selected
-        hero: 'dark',       // black
-        about: 'light',     // white
-        skills: 'dark',     // black
-        projects: 'light',  // white
-        experience: 'dark', // black
-        contact: 'light',   // white
-        footer: 'light'     // white
+        hero: 'dark' as const,       // black
+        about: 'light' as const,     // white
+        skills: 'dark' as const,     // black
+        projects: 'light' as const,  // white
+        experience: 'dark' as const, // black
+        contact: 'light' as const,   // white
+        footer: 'light' as const     // white
       },
       light: {
         // When light theme is selected
-        hero: 'light',      // white
-        about: 'dark',      // black
-        skills: 'light',    // white
-        projects: 'dark',   // black
-        experience: 'light', // white
-        contact: 'dark',    // black
-        footer: 'light'     // white
+        hero: 'light' as const,      // white
+        about: 'dark' as const,      // black
+        skills: 'light' as const,    // white
+        projects: 'dark' as const,   // black
+        experience: 'light' as const, // white
+        contact: 'dark' as const,    // black
+        footer: 'light' as const     // white
       }
     };
 
