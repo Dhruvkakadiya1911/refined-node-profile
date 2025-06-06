@@ -106,14 +106,18 @@ const ContactSection = () => {
         </div>
 
         {/* Bottom decorative elements */}
-        <div className="mt-12 sm:mt-16 md:mt-24 text-center">
-          <div className={`inline-flex items-center space-x-4 px-6 sm:px-8 py-3 sm:py-4 rounded-full backdrop-blur-lg border transition-all duration-1000 ${
-            sectionTheme === 'light'
-              ? 'bg-white/20 border-gray-200/50 text-gray-700'
-              : 'bg-black/20 border-gray-700/50 text-gray-300'
-          }`}>
-            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="font-medium text-sm sm:text-base">Available for exciting projects</span>
+         <div className="mt-12 sm:mt-16 md:mt-24 text-center">
+          <div
+            className={`inline-flex items-center space-x-4 px-6 sm:px-8 py-3 sm:py-4 rounded-full backdrop-blur-lg border transition-all duration-1000 hover:scale-105 hover:shadow-lg ${
+              sectionTheme === 'light'
+                ? 'bg-white/20 border-gray-200/50 text-gray-700 hover:shadow-blue-200/50'
+                : 'bg-black/20 border-gray-700/50 text-gray-300 hover:shadow-purple-500/30'
+            }`}
+          >
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span className="font-medium text-sm sm:text-base hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-green-500 hover:to-blue-500 transition-all duration-500">
+              Available for exciting projects
+            </span>
           </div>
         </div>
       </div>
