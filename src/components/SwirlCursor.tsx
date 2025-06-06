@@ -11,11 +11,11 @@ const SwirlCursor = ({ isActive, colorTheme = 'blue' }: SwirlCursorProps) => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const trailIdRef = useRef(0);
 
-  // Color themes for the swirl
+  // Updated color themes with lighter colors
   const colorThemes = {
-    blue: ['#b3e5fc', '#81d4fa', '#4fc3f7'],
-    pink: ['#f8bbd0', '#f48fb1', '#f06292'],
-    purple: ['#e1bee7', '#ce93d8', '#ba68c8']
+    blue: ['#e6f7ff', '#bae7ff', '#91d5ff'],   // Lighter blue shades
+    pink: ['#fff0f6', '#ffd6e7', '#ffadd2'],   // Lighter pink shades
+    purple: ['#f9f0ff', '#efdbff', '#d3adf7']  // Lighter purple shades
   };
 
   const colors = colorThemes[colorTheme];
@@ -63,11 +63,11 @@ const SwirlCursor = ({ isActive, colorTheme = 'blue' }: SwirlCursorProps) => {
         {`
           @keyframes swirlFade {
             0% {
-              opacity: 0.6;
+              opacity: 0.7;
               transform: scale(1) rotate(0deg);
             }
             50% {
-              opacity: 0.4;
+              opacity: 0.5;
               transform: scale(1.2) rotate(180deg);
             }
             100% {
@@ -92,7 +92,7 @@ const SwirlCursor = ({ isActive, colorTheme = 'blue' }: SwirlCursorProps) => {
         
         {/* Trail particles */}
         {trail.map((point, index) => {
-          const opacity = (index + 1) / trail.length * 0.6;
+          const opacity = (index + 1) / trail.length * 0.7; // Increased opacity slightly
           const scale = (index + 1) / trail.length * 0.8;
           const colorIndex = index % colors.length;
           
