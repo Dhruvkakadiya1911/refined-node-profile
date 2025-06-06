@@ -58,61 +58,63 @@ const SwirlCursor = ({ isActive, colorTheme = 'blue' }: SwirlCursorProps) => {
   if (!isActive || isTouchDevice) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-30">
-      {/* Main cursor swirl */}
-      <div
-        className="absolute w-6 h-6 rounded-full opacity-80 transition-all duration-75 ease-out"
-        style={{
-          left: position.x - 12,
-          top: position.y - 12,
-          background: `radial-gradient(circle, ${colors[0]}, ${colors[1]})`,
-          filter: 'blur(1px)',
-          transform: 'scale(1)',
-        }}
-      />
-      
-      {/* Trail particles */}
-      {trail.map((point, index) => {
-        const opacity = (index + 1) / trail.length * 0.6;
-        const scale = (index + 1) / trail.length * 0.8;
-        const colorIndex = index % colors.length;
+    <>
+      <style>
+        {`
+          @keyframes swirlFade {
+            0% {
+              opacity: 0.6;
+              transform: scale(1) rotate(0deg);
+            }
+            50% {
+              opacity: 0.4;
+              transform: scale(1.2) rotate(180deg);
+            }
+            100% {
+              opacity: 0;
+              transform: scale(0.8) rotate(360deg);
+            }
+          }
+        `}
+      </style>
+      <div className="fixed inset-0 pointer-events-none z-30">
+        {/* Main cursor swirl */}
+        <div
+          className="absolute w-6 h-6 rounded-full opacity-80 transition-all duration-75 ease-out"
+          style={{
+            left: position.x - 12,
+            top: position.y - 12,
+            background: `radial-gradient(circle, ${colors[0]}, ${colors[1]})`,
+            filter: 'blur(1px)',
+            transform: 'scale(1)',
+          }}
+        />
         
-        return (
-          <div
-            key={point.id}
-            className="absolute rounded-full transition-all duration-200 ease-out"
-            style={{
-              left: point.x - 8,
-              top: point.y - 8,
-              width: 16 * scale,
-              height: 16 * scale,
-              background: colors[colorIndex],
-              opacity: opacity,
-              filter: 'blur(2px)',
-              animation: `swirlFade 0.8s ease-out forwards`,
-            }}
-          />
-        );
-      })}
-      
-      {/* CSS animations */}
-      <style jsx>{`
-        @keyframes swirlFade {
-          0% {
-            opacity: 0.6;
-            transform: scale(1) rotate(0deg);
-          }
-          50% {
-            opacity: 0.4;
-            transform: scale(1.2) rotate(180deg);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0.8) rotate(360deg);
-          }
-        }
-      `}</style>
-    </div>
+        {/* Trail particles */}
+        {trail.map((point, index) => {
+          const opacity = (index + 1) / trail.length * 0.6;
+          const scale = (index + 1) / trail.length * 0.8;
+          const colorIndex = index % colors.length;
+          
+          return (
+            <div
+              key={point.id}
+              className="absolute rounded-full transition-all duration-200 ease-out"
+              style={{
+                left: point.x - 8,
+                top: point.y - 8,
+                width: 16 * scale,
+                height: 16 * scale,
+                background: colors[colorIndex],
+                opacity: opacity,
+                filter: 'blur(2px)',
+                animation: `swirlFade 0.8s ease-out forwards`,
+              }}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
 
