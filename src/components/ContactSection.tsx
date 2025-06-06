@@ -61,13 +61,13 @@ const ContactSection = () => {
           </p>
           
           {/* Enhanced Color theme picker with 3D effects */}
-          <div className="transform hover:scale-110 transition-all duration-300">
+          {/* <div className="transform hover:scale-110 transition-all duration-300">
             <ColorThemePicker 
               currentTheme={colorTheme}
               onThemeChange={setColorTheme}
               sectionTheme={sectionTheme}
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Main Content Grid with 3D Cards */}
