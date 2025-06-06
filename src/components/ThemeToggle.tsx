@@ -24,13 +24,13 @@ const ThemeToggle = () => {
       }`}></div>
       
       {/* Loading spinner overlay */}
-      {isTransitioning && (
+      {/* {isTransitioning && (
         <div className="absolute inset-0 flex items-center justify-center">
           <Loader2 className={`w-5 h-5 md:w-6 md:h-6 animate-spin ${
             theme === 'dark' ? 'text-white' : 'text-black'
           }`} />
         </div>
-      )}
+      )} */}
       
       {/* Icon container */}
       <div className={`relative w-5 h-5 md:w-6 md:h-6 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
