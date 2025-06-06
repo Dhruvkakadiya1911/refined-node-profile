@@ -51,44 +51,44 @@ const Navigation = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex justify-between items-center py-3 sm:py-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 relative z-10">
+        <div className="flex justify-between items-center py-2 sm:py-3 md:py-4">
           {/* Enhanced futuristic logo */}
           <div className="relative group cursor-pointer pointer-events-auto">
-            <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3">
               <div className="relative">
                 {/* Main logo with enhanced effects */}
-                <div className="relative bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-md border border-blue-500/30 rounded-lg sm:rounded-2xl p-2 sm:p-3 lg:p-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:border-purple-500/50 touch-manipulation">
-                  <div className="text-lg sm:text-xl lg:text-2xl font-black bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                <div className="relative bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-md border border-blue-500/30 rounded-lg sm:rounded-2xl p-1.5 sm:p-2 lg:p-3 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:border-purple-500/50 touch-manipulation">
+                  <div className="text-base sm:text-lg lg:text-2xl font-black bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                     DK
                   </div>
                   {/* Animated corner indicators */}
-                  <div className="absolute -top-0.5 sm:-top-1 -right-0.5 sm:-right-1 w-1.5 sm:w-2 h-1.5 sm:h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"></div>
-                  <div className="absolute -bottom-0.5 sm:-bottom-1 -left-0.5 sm:-left-1 w-1 sm:w-1.5 h-1 sm:h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="absolute -top-0.5 -right-0.5 w-1 sm:w-1.5 lg:w-2 h-1 sm:h-1.5 lg:h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"></div>
+                  <div className="absolute -bottom-0.5 -left-0.5 w-0.5 sm:w-1 lg:w-1.5 h-0.5 sm:h-1 lg:h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                 </div>
                 
-                {/* Orbiting elements */}
-                <div className="absolute inset-0 animate-spin pointer-events-none" style={{ animationDuration: '20s' }}>
-                  <div className="absolute -top-0.5 sm:-top-1 left-1/2 w-0.5 sm:w-1 h-0.5 sm:h-1 bg-blue-400 rounded-full"></div>
-                  <div className="absolute top-1/2 -right-0.5 sm:-right-1 w-0.5 sm:w-1 h-0.5 sm:h-1 bg-purple-400 rounded-full"></div>
+                {/* Orbiting elements - hidden on very small screens */}
+                <div className="hidden sm:block absolute inset-0 animate-spin pointer-events-none" style={{ animationDuration: '20s' }}>
+                  <div className="absolute -top-0.5 left-1/2 w-0.5 sm:w-1 h-0.5 sm:h-1 bg-blue-400 rounded-full"></div>
+                  <div className="absolute top-1/2 -right-0.5 w-0.5 sm:w-1 h-0.5 sm:h-1 bg-purple-400 rounded-full"></div>
                 </div>
               </div>
               
               <div className="hidden sm:flex flex-col">
-                <div className={`text-xs lg:text-sm font-mono transition-colors duration-300 mb-1 ${
+                <div className={`text-xs lg:text-sm font-mono transition-colors duration-300 mb-0 sm:mb-1 ${
                   theme === 'dark' ? 'text-white/80' : 'text-black/80'
                 }`}>
                   <span className="text-blue-400 dark:text-blue-500">&lt;</span>
                   <span>developer</span>
                   <span className="text-blue-400 dark:text-blue-500">/&gt;</span>
                 </div>
-                <div className={`flex items-center space-x-1 sm:space-x-2 text-xs font-mono ${
+                <div className={`flex items-center space-x-1 text-xs font-mono ${
                   theme === 'dark' ? 'text-white/60' : 'text-black/60'
                 }`}>
-                  <Terminal className="w-2.5 sm:w-3 h-2.5 sm:h-3 text-cyan-400" />
+                  <Terminal className="w-2.5 h-2.5 text-cyan-400" />
                   <span className="hidden lg:inline">backend.alchemist</span>
                   <span className="lg:hidden">backend</span>
-                  <Cpu className="w-2.5 sm:w-3 h-2.5 sm:h-3 text-purple-400 animate-pulse" />
+                  <Cpu className="w-2.5 h-2.5 text-purple-400 animate-pulse" />
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ const Navigation = () => {
               <div key={item.name} className="relative group">
                 <a
                   href={item.href}
-                  className={`relative px-3 xl:px-6 py-2 xl:py-3 transition-all duration-300 font-medium rounded-xl xl:rounded-2xl overflow-hidden flex items-center space-x-1 xl:space-x-2 backdrop-blur-sm cursor-pointer pointer-events-auto z-10 text-sm xl:text-base touch-manipulation min-h-[44px] ${
+                  className={`relative px-3 xl:px-5 py-2 xl:py-2.5 transition-all duration-300 font-medium rounded-xl overflow-hidden flex items-center space-x-1 xl:space-x-2 backdrop-blur-sm cursor-pointer pointer-events-auto z-10 text-sm xl:text-base touch-manipulation min-h-[44px] ${
                     theme === 'dark'
                       ? 'text-white hover:text-blue-300'
                       : 'text-black hover:text-blue-700'
@@ -114,11 +114,11 @@ const Navigation = () => {
                   <span className="text-xs xl:text-sm transition-transform duration-300 group-hover:scale-110">{item.icon}</span>
                   <span className="relative z-10">{item.name}</span>
                   
-                  <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/20 to-cyan-500/10 rounded-xl xl:rounded-2xl transition-all duration-300 pointer-events-none ${
+                  <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/20 to-cyan-500/10 rounded-xl transition-all duration-300 pointer-events-none ${
                     hoveredItem === item.name ? 'scale-100 opacity-100' : 'scale-75 opacity-0'
                   }`}></div>
                   
-                  <div className={`absolute inset-0 rounded-xl xl:rounded-2xl transition-all duration-300 pointer-events-none ${
+                  <div className={`absolute inset-0 rounded-xl transition-all duration-300 pointer-events-none ${
                     hoveredItem === item.name ? 'border border-blue-500/50' : 'border border-transparent'
                   }`}></div>
                   
@@ -142,14 +142,14 @@ const Navigation = () => {
                 <div className={`absolute inset-0 transition-all duration-500 pointer-events-none ${
                   hoveredItem === item.name ? 'opacity-60 scale-150' : 'opacity-0 scale-100'
                 }`}>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/30 to-cyan-500/20 rounded-xl xl:rounded-2xl blur-xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/30 to-cyan-500/20 rounded-xl blur-xl"></div>
                   <div className="absolute top-1 xl:top-2 left-2 xl:left-4 w-1 h-1 bg-blue-400 rounded-full animate-ping"></div>
                   <div className="absolute bottom-2 xl:bottom-3 right-3 xl:right-5 w-1 h-1 bg-purple-400 rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
                 </div>
               </div>
             ))}
             
-            <div className="ml-4 xl:ml-6 pl-4 xl:pl-6 border-l border-gradient-to-b from-blue-500/30 via-purple-500/50 to-cyan-500/30 pointer-events-auto">
+            <div className="ml-2 xl:ml-4 pl-2 xl:pl-4 border-l border-gradient-to-b from-blue-500/30 via-purple-500/50 to-cyan-500/30 pointer-events-auto">
               <div className="relative">
                 <ThemeToggle />
                 {/* Energy indicator */}
@@ -160,32 +160,34 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Enhanced futuristic mobile menu */}
-          <div className="lg:hidden flex items-center space-x-3 sm:space-x-4 pointer-events-auto">
+          {/* Enhanced futuristic mobile menu button */}
+          <div className="lg:hidden flex items-center space-x-2 sm:space-x-4 pointer-events-auto">
             <ThemeToggle />
             <button
-              className="relative p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-md hover:from-blue-500/30 hover:via-purple-500/30 hover:to-cyan-500/30 transition-all duration-500 group border border-blue-500/30 hover:border-purple-500/50 shadow-lg shadow-blue-500/20 cursor-pointer pointer-events-auto z-10 touch-manipulation min-h-[44px] min-w-[44px]"
+              className="relative p-1.5 sm:p-2 md:p-3 rounded-xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-md hover:from-blue-500/30 hover:via-purple-500/30 hover:to-cyan-500/30 transition-all duration-500 group border border-blue-500/30 hover:border-purple-500/50 shadow-lg shadow-blue-500/20 cursor-pointer pointer-events-auto z-10 touch-manipulation min-h-[44px] min-w-[44px]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
             >
-              <div className="relative w-5 sm:w-6 h-5 sm:h-6">
-                <Menu className={`absolute inset-0 w-5 sm:w-6 h-5 sm:h-6 transition-all duration-500 ${
+              <div className="relative w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6">
+                <Menu className={`absolute inset-0 w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 transition-all duration-500 ${
                   isMenuOpen ? 'opacity-0 rotate-180 scale-75' : 'opacity-100 rotate-0 scale-100'
                 } ${theme === 'dark' ? 'text-blue-300' : 'text-blue-700'}`} />
-                <X className={`absolute inset-0 w-5 sm:w-6 h-5 sm:h-6 transition-all duration-500 ${
+                <X className={`absolute inset-0 w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 transition-all duration-500 ${
                   isMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-75'
                 } ${theme === 'dark' ? 'text-purple-300' : 'text-purple-700'}`} />
               </div>
               {/* Holographic glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-xl sm:rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150 pointer-events-none"></div>
             </button>
           </div>
         </div>
 
         {/* Enhanced futuristic mobile navigation */}
         <div className={`lg:hidden overflow-hidden transition-all duration-700 pointer-events-auto ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          isMenuOpen ? 'max-h-[90vh] opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className={`backdrop-blur-3xl rounded-2xl sm:rounded-3xl mt-4 p-4 sm:p-6 border border-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 shadow-2xl shadow-blue-500/20 ${
+          <div className={`backdrop-blur-3xl rounded-2xl mt-2 sm:mt-4 p-3 sm:p-4 md:p-6 border border-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 shadow-2xl shadow-blue-500/20 ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-black/95 via-gray-900/95 to-black/95'
               : 'bg-gradient-to-br from-white/95 via-gray-100/95 to-white/95'
@@ -194,7 +196,7 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className={`flex items-center space-x-3 sm:space-x-4 py-3 sm:py-4 transition-all duration-500 font-medium border-b last:border-b-0 hover:pl-4 sm:hover:pl-6 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 group cursor-pointer pointer-events-auto relative z-10 text-sm sm:text-base touch-manipulation min-h-[44px] ${
+                className={`flex items-center space-x-2 sm:space-x-4 py-2.5 sm:py-3 md:py-4 transition-all duration-500 font-medium border-b last:border-b-0 hover:pl-2 sm:hover:pl-4 md:hover:pl-6 rounded-lg hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 group cursor-pointer pointer-events-auto relative z-10 text-sm sm:text-base touch-manipulation min-h-[44px] ${
                   theme === 'dark'
                     ? 'text-white hover:text-blue-300 border-white/10'
                     : 'text-black hover:text-blue-700 border-black/10'

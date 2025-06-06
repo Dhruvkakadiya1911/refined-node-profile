@@ -42,14 +42,14 @@ const ContactForm = ({ sectionTheme }: ContactFormProps) => {
   };
 
   return (
-    <div className={`rounded-3xl p-8 backdrop-blur-xl border transition-all duration-1000 shadow-2xl relative overflow-hidden ${
+    <div className={`rounded-3xl p-5 sm:p-6 md:p-8 backdrop-blur-xl border transition-all duration-1000 shadow-2xl relative overflow-hidden ${
       sectionTheme === 'light'
         ? 'bg-white/40 border-gray-200/50 shadow-gray-200/50'
         : 'bg-black/40 border-gray-700/50 shadow-black/50'
     }`}>
       {/* Floating icon */}
       <div className="absolute top-4 right-4">
-        <Zap className={`w-6 h-6 animate-pulse ${
+        <Zap className={`w-5 h-5 sm:w-6 sm:h-6 animate-pulse ${
           sectionTheme === 'light' ? 'text-blue-500' : 'text-pink-400'
         }`} />
       </div>
@@ -62,13 +62,13 @@ const ContactForm = ({ sectionTheme }: ContactFormProps) => {
       }`} />
       
       <div className="relative z-10">
-        <h3 className={`text-3xl font-bold mb-8 transition-colors duration-1000 ${
+        <h3 className={`text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 transition-colors duration-1000 ${
           sectionTheme === 'light' 
             ? 'text-gray-900' 
             : 'text-white'
         }`}>Start a Conversation</h3>
         
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
           <div className="relative group">
             <Input
               type="text"
@@ -77,7 +77,7 @@ const ContactForm = ({ sectionTheme }: ContactFormProps) => {
               value={formData.name}
               onChange={handleChange}
               required
-              className={`border-2 transition-all duration-500 rounded-2xl shadow-lg group-hover:shadow-xl focus:shadow-2xl h-14 text-lg transform group-hover:scale-105 ${
+              className={`border-2 transition-all duration-500 rounded-xl sm:rounded-2xl shadow-lg group-hover:shadow-xl focus:shadow-2xl h-12 sm:h-14 text-base sm:text-lg transform group-hover:scale-102 sm:group-hover:scale-105 ${
                 sectionTheme === 'light'
                   ? 'bg-white/80 border-gray-200 text-black placeholder-gray-500 focus:border-blue-400 focus:ring-4 focus:ring-blue-100 hover:border-gray-400'
                   : 'bg-gray-900/60 border-gray-600 text-white placeholder-gray-400 focus:border-purple-400 focus:ring-4 focus:ring-purple-100/20 hover:border-gray-500'
@@ -93,7 +93,7 @@ const ContactForm = ({ sectionTheme }: ContactFormProps) => {
               value={formData.email}
               onChange={handleChange}
               required
-              className={`border-2 transition-all duration-500 rounded-2xl shadow-lg group-hover:shadow-xl focus:shadow-2xl h-14 text-lg transform group-hover:scale-105 ${
+              className={`border-2 transition-all duration-500 rounded-xl sm:rounded-2xl shadow-lg group-hover:shadow-xl focus:shadow-2xl h-12 sm:h-14 text-base sm:text-lg transform group-hover:scale-102 sm:group-hover:scale-105 ${
                 sectionTheme === 'light'
                   ? 'bg-white/80 border-gray-200 text-black placeholder-gray-500 focus:border-blue-400 focus:ring-4 focus:ring-blue-100 hover:border-gray-400'
                   : 'bg-gray-900/60 border-gray-600 text-white placeholder-gray-400 focus:border-purple-400 focus:ring-4 focus:ring-purple-100/20 hover:border-gray-500'
@@ -108,8 +108,8 @@ const ContactForm = ({ sectionTheme }: ContactFormProps) => {
               value={formData.message}
               onChange={handleChange}
               required
-              rows={6}
-              className={`border-2 resize-none transition-all duration-500 rounded-2xl shadow-lg group-hover:shadow-xl focus:shadow-2xl text-lg transform group-hover:scale-105 ${
+              rows={5}
+              className={`border-2 resize-none transition-all duration-500 rounded-xl sm:rounded-2xl shadow-lg group-hover:shadow-xl focus:shadow-2xl text-base sm:text-lg transform group-hover:scale-102 sm:group-hover:scale-105 ${
                 sectionTheme === 'light'
                   ? 'bg-white/80 border-gray-200 text-black placeholder-gray-500 focus:border-blue-400 focus:ring-4 focus:ring-blue-100 hover:border-gray-400'
                   : 'bg-gray-900/60 border-gray-600 text-white placeholder-gray-400 focus:border-purple-400 focus:ring-4 focus:ring-purple-100/20 hover:border-gray-500'
@@ -120,28 +120,28 @@ const ContactForm = ({ sectionTheme }: ContactFormProps) => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full transition-all duration-500 disabled:opacity-50 hover:scale-105 hover:-translate-y-1 rounded-2xl py-6 text-lg font-semibold relative overflow-hidden group shadow-xl hover:shadow-2xl ${
+            className={`w-full transition-all duration-500 disabled:opacity-50 hover:scale-102 sm:hover:scale-105 hover:-translate-y-0.5 sm:hover:-translate-y-1 rounded-xl sm:rounded-2xl py-4 sm:py-5 md:py-6 text-base sm:text-lg font-semibold relative overflow-hidden group shadow-xl hover:shadow-2xl ${
               sectionTheme === 'light'
                 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-blue-300/50'
                 : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 hover:shadow-purple-400/50'
             }`}
           >
             {/* Animated background */}
-            <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl ${
+            <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl sm:rounded-2xl ${
               sectionTheme === 'light'
                 ? 'bg-gradient-to-r from-cyan-400/20 to-pink-400/20'
                 : 'bg-gradient-to-r from-cyan-300/20 to-yellow-300/20'
             }`}></div>
             
-            <span className="relative z-10 flex items-center justify-center space-x-3">
+            <span className="relative z-10 flex items-center justify-center space-x-2 sm:space-x-3">
               {isSubmitting ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                   <span>Sending Magic...</span>
                 </>
               ) : (
                 <>
-                  <Send className="w-5 h-5" />
+                  <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Send Message</span>
                 </>
               )}
