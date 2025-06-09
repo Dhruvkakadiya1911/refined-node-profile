@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
 
 interface Shape {
   id: number;
@@ -22,7 +21,7 @@ const Floating3DShapes = ({ sectionTheme }: Floating3DShapesProps) => {
 
   useEffect(() => {
     const colors = sectionTheme === 'light' 
-      ? ['#6b7280', '#9ca3af', '#d1d5db', '#e5e7eb', '#f3f4f6']
+      ? ['#64748b', '#94a3b8', '#cbd5e1', '#e2e8f0', '#f1f5f9']
       : ['#4b5563', '#6b7280', '#9ca3af', '#d1d5db', '#e5e7eb'];
 
     const newShapes = Array.from({ length: 15 }, (_, i) => ({
@@ -116,14 +115,14 @@ const Floating3DShapes = ({ sectionTheme }: Floating3DShapesProps) => {
       <div 
         className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse-slow ${
           sectionTheme === 'light'
-            ? 'bg-gradient-to-r from-gray-400/10 to-gray-500/10'
+            ? 'bg-gradient-to-r from-slate-400/10 to-gray-500/10'
             : 'bg-gradient-to-r from-gray-600/20 to-gray-700/20'
         }`}
       />
       <div 
         className={`absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full blur-3xl animate-pulse-slow ${
           sectionTheme === 'light'
-            ? 'bg-gradient-to-r from-gray-500/10 to-gray-400/10'
+            ? 'bg-gradient-to-r from-gray-500/10 to-slate-400/10'
             : 'bg-gradient-to-r from-gray-700/20 to-gray-600/20'
         }`}
         style={{ animationDelay: '2s' }}

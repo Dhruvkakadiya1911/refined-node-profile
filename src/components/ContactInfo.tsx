@@ -12,7 +12,7 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
       icon: Mail,
       label: "Email",
       value: "dhruvkakadiya1911@gmail.com",
-      color: "from-gray-500 to-gray-600"
+      color: "from-slate-500 to-slate-600"
     },
     {
       href: "https://github.com",
@@ -28,27 +28,27 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
       label: "LinkedIn",
       value: "Dhruv Kakadiya",
       external: true,
-      color: "from-gray-400 to-gray-500"
+      color: "from-slate-400 to-slate-500"
     }
   ];
 
   return (
     <div className={`rounded-3xl p-5 sm:p-6 md:p-8 backdrop-blur-xl border transition-all duration-1000 shadow-2xl relative overflow-hidden ${
       sectionTheme === 'light'
-        ? 'bg-white/40 border-gray-200/50 shadow-gray-200/50'
+        ? 'bg-white/40 border-slate-200/50 shadow-slate-200/50'
         : 'bg-black/40 border-gray-700/50 shadow-black/50'
     }`}>
       {/* Floating sparkles */}
       <div className="absolute top-4 right-4">
         <Sparkles className={`w-5 h-5 sm:w-6 sm:h-6 animate-pulse ${
-          sectionTheme === 'light' ? 'text-gray-500' : 'text-gray-400'
+          sectionTheme === 'light' ? 'text-slate-500' : 'text-gray-400'
         }`} />
       </div>
       
       {/* Gradient overlay */}
       <div className={`absolute inset-0 opacity-5 ${
         sectionTheme === 'light'
-          ? 'bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600'
+          ? 'bg-gradient-to-br from-slate-400 via-gray-500 to-slate-600'
           : 'bg-gradient-to-br from-gray-600 via-gray-500 to-gray-400'
       }`} />
       
@@ -63,7 +63,7 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
           </h3>
           <p className={`leading-relaxed mb-6 sm:mb-8 text-base sm:text-lg transition-colors duration-1000 ${
             sectionTheme === 'light' 
-              ? 'text-gray-700' 
+              ? 'text-slate-700' 
               : 'text-gray-300'
           }`}>
             I'm always excited to discuss new opportunities, innovative projects, 
@@ -82,7 +82,7 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
                 {...(link.external && { target: "_blank", rel: "noopener noreferrer" })}
                 className={`flex items-center space-x-4 sm:space-x-6 transition-all duration-500 group rounded-xl sm:rounded-2xl p-4 sm:p-6 transform hover:scale-105 hover:-translate-y-1 sm:hover:-translate-y-2 ${
                   sectionTheme === 'light'
-                    ? 'text-gray-700 hover:text-black hover:bg-white/60 hover:shadow-xl'
+                    ? 'text-slate-700 hover:text-black hover:bg-white/60 hover:shadow-xl'
                     : 'text-gray-300 hover:text-white hover:bg-gray-800/40 hover:shadow-2xl'
                 }`}
               >
@@ -93,7 +93,7 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
                   <div className="font-semibold text-base sm:text-lg md:text-xl truncate">{link.label}</div>
                   <div className={`text-sm sm:text-base mt-0.5 sm:mt-1 truncate transition-colors duration-1000 ${
                     sectionTheme === 'light' 
-                      ? 'text-gray-600' 
+                      ? 'text-slate-600' 
                       : 'text-gray-400'
                   }`}>{link.value}</div>
                 </div>
