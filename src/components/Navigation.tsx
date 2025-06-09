@@ -151,22 +151,18 @@ const Navigation = () => {
             
             <div className="ml-2 xl:ml-4 pl-2 xl:pl-4 border-l border-gradient-to-b from-blue-500/30 via-purple-500/50 to-cyan-500/30 pointer-events-auto">
               <div className="relative">
+                <ThemeToggle />
                 {/* Energy indicator */}
-                  {/* <Zap className="w-2 xl:w-3 h-2 xl:h-3 text-yellow-400 animate-pulse" /> */}
-                <div className="absolute -top-5 -right-2 pointer-events-none">
+                <div className="absolute -top-1 -right-1 pointer-events-none">
                   <Zap className="w-2 xl:w-3 h-2 xl:h-3 text-yellow-400 animate-pulse" />
                 </div>
-                  <div className="absolute -top-8 -right-19 pointer-events-none">
-
-                <ThemeToggle />
-                  </div>
               </div>
             </div>
           </div>
 
           {/* Enhanced futuristic mobile menu button */}
-           
           <div className="lg:hidden flex items-center space-x-2 sm:space-x-4 pointer-events-auto">
+            <ThemeToggle />
             <button
               className="relative p-1.5 sm:p-2 md:p-3 rounded-xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-md hover:from-blue-500/30 hover:via-purple-500/30 hover:to-cyan-500/30 transition-all duration-500 group border border-blue-500/30 hover:border-purple-500/50 shadow-lg shadow-blue-500/20 cursor-pointer pointer-events-auto z-10 touch-manipulation min-h-[44px] min-w-[44px]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -184,10 +180,6 @@ const Navigation = () => {
               {/* Holographic glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150 pointer-events-none"></div>
             </button>
-          <div className='janviiiiiiii'>
-
-<ThemeToggle />
-</div>
           </div>
         </div>
 

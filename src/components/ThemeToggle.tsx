@@ -9,7 +9,7 @@ const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       disabled={isTransitioning}
-      className={`z-50 p-3 md:p-4 rounded-full backdrop-blur-md hover:scale-110 transition-all duration-700 group overflow-hidden border shadow-lg disabled:opacity-70 disabled:cursor-not-allowed ${
+      className={`fixed top-6 right-6 z-50 p-3 md:p-4 rounded-full backdrop-blur-md hover:scale-110 transition-all duration-700 group overflow-hidden border shadow-lg disabled:opacity-70 disabled:cursor-not-allowed ${
         theme === 'dark'
           ? 'bg-white/20 border-white/30 hover:bg-white/30 text-white'
           : 'bg-black/20 border-black/30 hover:bg-black/30 text-black'
