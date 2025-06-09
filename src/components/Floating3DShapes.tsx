@@ -22,8 +22,8 @@ const Floating3DShapes = ({ sectionTheme }: Floating3DShapesProps) => {
 
   useEffect(() => {
     const colors = sectionTheme === 'light' 
-      ? ['#3b82f6', '#8b5cf6', '#ef4444', '#10b981', '#f59e0b']
-      : ['#60a5fa', '#a78bfa', '#f87171', '#34d399', '#fbbf24'];
+      ? ['#6b7280', '#9ca3af', '#d1d5db', '#e5e7eb', '#f3f4f6']
+      : ['#4b5563', '#6b7280', '#9ca3af', '#d1d5db', '#e5e7eb'];
 
     const newShapes = Array.from({ length: 15 }, (_, i) => ({
       id: i,
@@ -40,7 +40,7 @@ const Floating3DShapes = ({ sectionTheme }: Floating3DShapesProps) => {
   }, [sectionTheme]);
 
   const getShapeElement = (shape: Shape) => {
-    const baseClasses = `absolute transition-all duration-1000 opacity-20 hover:opacity-40`;
+    const baseClasses = `absolute transition-all duration-1000 opacity-10 hover:opacity-20`;
     const style = {
       left: `${shape.x}%`,
       top: `${shape.y}%`,
@@ -60,7 +60,7 @@ const Floating3DShapes = ({ sectionTheme }: Floating3DShapesProps) => {
             style={{
               ...style,
               background: `linear-gradient(45deg, ${shape.color}, ${shape.color}80)`,
-              boxShadow: `0 10px 30px ${shape.color}40`,
+              boxShadow: `0 10px 30px ${shape.color}20`,
             }}
           />
         );
@@ -72,7 +72,7 @@ const Floating3DShapes = ({ sectionTheme }: Floating3DShapesProps) => {
             style={{
               ...style,
               background: `radial-gradient(circle, ${shape.color}, ${shape.color}60)`,
-              boxShadow: `0 0 30px ${shape.color}60`,
+              boxShadow: `0 0 30px ${shape.color}30`,
             }}
           />
         );
@@ -116,15 +116,15 @@ const Floating3DShapes = ({ sectionTheme }: Floating3DShapesProps) => {
       <div 
         className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse-slow ${
           sectionTheme === 'light'
-            ? 'bg-gradient-to-r from-blue-400/20 to-purple-400/20'
-            : 'bg-gradient-to-r from-cyan-400/30 to-pink-400/30'
+            ? 'bg-gradient-to-r from-gray-400/10 to-gray-500/10'
+            : 'bg-gradient-to-r from-gray-600/20 to-gray-700/20'
         }`}
       />
       <div 
         className={`absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full blur-3xl animate-pulse-slow ${
           sectionTheme === 'light'
-            ? 'bg-gradient-to-r from-pink-400/20 to-orange-400/20'
-            : 'bg-gradient-to-r from-purple-400/30 to-blue-400/30'
+            ? 'bg-gradient-to-r from-gray-500/10 to-gray-400/10'
+            : 'bg-gradient-to-r from-gray-700/20 to-gray-600/20'
         }`}
         style={{ animationDelay: '2s' }}
       />

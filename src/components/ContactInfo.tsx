@@ -12,7 +12,7 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
       icon: Mail,
       label: "Email",
       value: "dhruvkakadiya1911@gmail.com",
-      color: "from-red-400 to-pink-400"
+      color: "from-gray-500 to-gray-600"
     },
     {
       href: "https://github.com",
@@ -20,7 +20,7 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
       label: "GitHub",
       value: "@Dhruvkakadiya1911",
       external: true,
-      color: "from-gray-400 to-gray-600"
+      color: "from-gray-600 to-gray-700"
     },
     {
       href: "https://linkedin.com",
@@ -28,7 +28,7 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
       label: "LinkedIn",
       value: "Dhruv Kakadiya",
       external: true,
-      color: "from-blue-400 to-blue-600"
+      color: "from-gray-400 to-gray-500"
     }
   ];
 
@@ -41,15 +41,15 @@ const ContactInfo = ({ sectionTheme }: ContactInfoProps) => {
       {/* Floating sparkles */}
       <div className="absolute top-4 right-4">
         <Sparkles className={`w-5 h-5 sm:w-6 sm:h-6 animate-pulse ${
-          sectionTheme === 'light' ? 'text-purple-500' : 'text-cyan-400'
+          sectionTheme === 'light' ? 'text-gray-500' : 'text-gray-400'
         }`} />
       </div>
       
       {/* Gradient overlay */}
-      <div className={`absolute inset-0 opacity-10 ${
+      <div className={`absolute inset-0 opacity-5 ${
         sectionTheme === 'light'
-          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500'
-          : 'bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500'
+          ? 'bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600'
+          : 'bg-gradient-to-br from-gray-600 via-gray-500 to-gray-400'
       }`} />
       
       <div className="relative z-10 space-y-6 sm:space-y-8">
